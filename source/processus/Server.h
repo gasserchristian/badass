@@ -25,16 +25,18 @@ public:
 	virtual double etatCurr(double val = 0, bool set = false) { return NULL; }
 
 	//create and open files
-	virtual void create_files();
+	void create_files();
 
 	//Journal
-	virtual void log_file(string text);
+	void log_file(string text);
 
 	//GNU
-	virtual void log_file(double value, bool end_line);
+	void gnu_header(int zone_count);
+	void log_file(double value);
+	void gnu_endl();
 
 	//close all files
-	virtual void close_files();
+	void close_files();
 
 private:
 	ofstream journal_;

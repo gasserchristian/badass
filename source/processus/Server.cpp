@@ -15,8 +15,6 @@ Server::~Server() {}
 void Server::create_files() {
 	journal_.open("journal.txt");
 	gnu_.open("gnu.txt");
-	gnu_ << "# time[" << tick_unit_ << "]   " << endl;
-	// mettre ici le reste des headers du gnu et enlever le endl au dessus  val_phen   state_curr    val_control"
 }
 
 //JOURNAL
@@ -25,9 +23,20 @@ void Server::log_file(string text) {
 }
 
 //GNU
-void Server::log_file(double value, bool end_line) {
-	if(end_line) gnu_ << value << endl;
-	else gnu_ << value << " ";
+void Server::gnu_header(int zone_count) {
+	gnu_ << "# time[" << tick_unit_ << "]   ";
+	for(int i = 0; i < zone_count; i++) {
+		gnu_ << "val_phen" << i+1 << "    state_curr" << i+1 << "   val_control" << i+1;
+	}
+	gnu_ << endl;
+}
+
+void Server::log_file(double value) {
+	gnu_ << value << " ";
+}
+
+void Server::gnu_endl() {
+	gnu_ << endl;
 }
 
 //Close all files
