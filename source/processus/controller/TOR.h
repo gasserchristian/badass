@@ -19,8 +19,8 @@ public:
 	void update();
 
 
-	virtual double workValphen(double val = 0, bool set = false) { return NULL; }
-	virtual double etatCurr(double val = 0, bool set = false) { return NULL; }
+	virtual double workValphen(double val = 0, bool set = false)  { return state_->workValphen(); }
+	virtual double etatCurr(double val = 0, bool set = false)  { return state_->etatCurr(); }
 private:
 	Process* server_;
 	Process* state_;
