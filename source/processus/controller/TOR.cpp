@@ -23,7 +23,7 @@ void TOR::update() {
 	State* etat = dynamic_cast <State*> ( state_ );
 	if(etat_curr <= consigne_) {
 		valctr = val_sat_;
-		serv->log_file('Val sat');
+		serv->log_file(string("Valeur saturée"));
 	}
 	else {
 		valctr = 0;
@@ -32,7 +32,7 @@ void TOR::update() {
 	etat->set_valCtrl(valctr);
 
 	serv->log_file(etat->workValphen(0,false));
-	serv->log_file(etat_curr);
+	serv->log_file(17.9);
 	serv->log_file(valctr);
 }
 
