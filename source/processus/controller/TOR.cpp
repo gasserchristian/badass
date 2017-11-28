@@ -32,7 +32,7 @@ void TOR::update() {
 	Server* serv = dynamic_cast <Server*> (server_);
 
 	serv->log_file(etat->workValphen(0,false));
-	serv->log_file(etat_curr, false);
+	serv->log_file(etat_curr);
 	serv->log_file(valctr);
 }
 
