@@ -26,6 +26,7 @@ void Simulator::run() {
 
 	//mise à jour et log des valeurs à chaque step:
 	for(int iTick = 0; iTick < nTicks_; iTick++) {
+		server->log_file(iTick);
 		i = 0;
 		for(int i = 0, c = Process_list_.size(); i < c; i ++) {
 			Process_list_[i]->update();
@@ -34,7 +35,9 @@ void Simulator::run() {
 	}
 
 	//Fermeture des fichiers:
-	server->close_files();
 	server->log_file("Simulation completed");
+	cout << "Simulation completed" << endl;
+	server->close_files();
+
 
 }
