@@ -18,18 +18,18 @@ TOR::~TOR() {
 
 void TOR::update() {
 	double etat_curr, valctr;
+	Server* serv = dynamic_cast <Server*> (server_);
 	etat_curr = state_->etatCurr();
 	State* etat = dynamic_cast <State*> ( state_ );
 	if(etat_curr <= consigne_) {
 		valctr = val_sat_;
+		serv->log_file('Val sat');
 	}
 	else {
 		valctr = 0;
 	}
 
 	etat->set_valCtrl(valctr);
-
-	Server* serv = dynamic_cast <Server*> (server_);
 
 	serv->log_file(etat->workValphen(0,false));
 	serv->log_file(etat_curr);
