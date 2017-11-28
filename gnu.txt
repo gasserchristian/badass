@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # time[ms]   val_phen1    state_curr1   val_control1val_phen2    state_curr2   val_control2
 9.90844 10 1000 9.90844 7.81689 0 
 9.90844 10 1000 9.90844 -3.63378 600 

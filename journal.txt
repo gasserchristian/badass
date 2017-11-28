@@ -23,6 +23,7 @@ phénomène maximum : 10
 Nom du controle : control_2
 Type du controle : TOR
 Parser complete, now running simulator...
+<<<<<<< HEAD
 Valeur saturée
 Valeur saturée
 Valeur saturée
