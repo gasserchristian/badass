@@ -15,7 +15,7 @@ void parser()
 	vector<Process*> Process_list;		    //vecteur contenant les pointeurs vers toutes les instances des classes filles de process
 	//-------------LECTURE DU FICHIER XML ET GESTION ERREUR -------------------------------
 	// import local adress of folder and use it to open paysage.xml
-	TiXmlDocument doc( "paysage.xml" );
+	TiXmlDocument doc("paysage.xml");
 	bool loadOkay = doc.LoadFile();
 	if ( !loadOkay )
 	{

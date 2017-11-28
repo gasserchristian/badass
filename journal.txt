@@ -1,0 +1,25 @@
+Nombre de Ticks : 1000
+Durée de la simulation : 1000ms
+Nom de la zone : zone_1
+ID unique de la zone : 1
+Nom de l'état : state_1
+Valeur iphen : 0
+Valeur ictrl : 0
+Nom du phénomène : phen_1
+type du phénomène : random
+phénomène minimum : 0
+phénomène maximum : 10
+Nom du controle : controle_1
+Type du controle : TOR
+Nom de la zone : zone_2
+ID unique de la zone : 2
+Nom de l'état : state_2
+Valeur iphen : 2
+Valeur ictrl : 2
+Nom du phénomène : phen_2
+type du phénomène : random
+phénomène minimum : 0
+phénomène maximum : 10
+Nom du controle : control_2
+Type du controle : TOR
+Parser complete, now running simulator...
