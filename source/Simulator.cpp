@@ -21,15 +21,20 @@ void Simulator::run() {
 	Process* proc = Process_list_[i-1];
 	Server* server = dynamic_cast <Server*> (proc);
 
+	int zone_count = (Process_list_.size()-1)/3;
+	server->gnu_header(zone_count);
+
 	//mise à jour et log des valeurs à chaque step:
 	for(int iTick = 0; iTick < nTicks_; iTick++) {
 		i = 0;
 		for(int i = 0, c = Process_list_.size(); i < c; i ++) {
 			Process_list_[i]->update();
 		}
+		server->gnu_endl();
 	}
 
 	//Fermeture des fichiers:
 	server->close_files();
+	server->log_file("Simulation completed");
 
 }

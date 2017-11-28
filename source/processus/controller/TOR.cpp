@@ -34,10 +34,10 @@ void TOR::update() {
 	cout << "step" << endl;
 	Server* serv = dynamic_cast <Server*> (server_);
 	cout << "step" << endl;
-	serv->log_file(etat_curr, false);
+	serv->log_file(etat_curr);
 	cout << "step" << endl;
-	serv->log_file(etat->workValphen(0,false), false);
-	serv->log_file(etat_curr, false);
+	serv->log_file(etat->workValphen(0,false));
+	serv->log_file(etat_curr);
 
 }
 
