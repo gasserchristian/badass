@@ -14,7 +14,7 @@
 #include "../processus/Control.h"
 #include "../processus/Server.h"
 #include "../processus/Process.h"
-#include "../processus/Phenomenes/RAND.h"
+#include "../processus/phenomenes/RAND.h"
 #include "../processus/controller/TOR.h"
 #include "../Simulator.h"
 #include <vector>

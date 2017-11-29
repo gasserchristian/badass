@@ -8,12 +8,10 @@
 
 #include "Simulator.h"
 
-Simulator::Simulator(vector<Process*> Process_list, int nTicks) : Process_list_(Process_list), nTicks_(nTicks) {
-
-}
+Simulator::Simulator(vector<Process*> Process_list, int nTicks) :
+Process_list_(Process_list), nTicks_(nTicks) {}
 
 Simulator::~Simulator() {}
-
 
 void Simulator::run() {
 
@@ -21,6 +19,7 @@ void Simulator::run() {
 	Process* proc = Process_list_[i-1];
 	Server* server = dynamic_cast <Server*> (proc);
 
+	//création du header du fichier gnu
 	int zone_count = (Process_list_.size()-1)/3;
 	server->gnu_header(zone_count);
 
@@ -38,6 +37,4 @@ void Simulator::run() {
 	server->log_file("Simulation completed");
 	cout << "Simulation completed" << endl;
 	server->close_files();
-
-
 }

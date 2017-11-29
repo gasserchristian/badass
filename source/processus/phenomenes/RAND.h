@@ -10,6 +10,7 @@
 
 #include "../Phenomenon.h"
 
+
 class RAND : public Phenomenon {
 public:
 	RAND(int ID, string name, Process* state, double val_min, double val_max);

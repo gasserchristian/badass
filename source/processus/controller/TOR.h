@@ -14,13 +14,16 @@
 
 class TOR : public Control {
 public:
-	TOR(int ID, string name, Process* server, Process* state, double val_sat, double consigne);
+	TOR(int ID, string name, Process* server, Process* state,
+		double val_sat, double consigne);
 	virtual ~TOR();
 	void update();
 
 
-	virtual double workValphen(double val = 0, bool set = false)  { return state_->workValphen(); }
-	virtual double etatCurr(double val = 0, bool set = false)  { return state_->etatCurr(); }
+	virtual double workValphen(double val = 0, bool set = false)
+		{ return state_->workValphen(); }
+	virtual double etatCurr(double val = 0, bool set = false)
+		{ return state_->etatCurr(); }
 private:
 	Process* server_;
 	Process* state_;

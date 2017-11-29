@@ -7,7 +7,8 @@
 
 #include "TOR.h"
 
-TOR::TOR(int ID, string name, Process* server, Process* state, double val_sat, double consigne) :
+TOR::TOR(int ID, string name, Process* server, Process* state, double val_sat,
+		double consigne) :
  Control(ID, name, val_sat, consigne), state_(state), server_(server) {
 
 }
