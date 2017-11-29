@@ -24,7 +24,11 @@ void TOR::update() {
 	State* etat = dynamic_cast <State*> ( state_ );
 	if(etat_curr <= consigne_) {
 		valctr = val_sat_;
-		serv->log_file(string("Valeur saturée"));
+		serv->log_file(string("State ")
+				+ to_string(ID_)
+				+ " (\"" + string(name_) + "\"). Relative error command/state "
+				+ to_string((etat_curr - consigne_)/consigne_*100)
+				+ "%. Control activated.........");
 	}
 	else {
 		valctr = 0;

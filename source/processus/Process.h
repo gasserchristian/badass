@@ -25,7 +25,7 @@ public:
 	virtual double workValphen(double val = 0, bool set = false) = 0;
 	virtual double etatCurr(double val = 0, bool set = false) = 0;
 
-private:
+protected:
 	unsigned ID_;
 	string name_;
 };

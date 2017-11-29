@@ -7,10 +7,10 @@
 	        <!-- le choix des paramètres est spécifique au type. donc pas d'ambiguité. -->
 	    </phenomenon>
 	    <state name="state_1">
-	        <param iphen="0" ictrl="0" val_phen = "10" state_curr = "10" />
+	        <param iphen="0.005" ictrl="0.35" val_phen = "10" state_curr = "10" />
 	    </state>
 	    <control name="controle_1" type="TOR">
-	        <param tresh_high = "1000" ctrl_min = "10"/>
+	        <param tresh_high = "30" ctrl_min = "10"/>
 	    </control>
 	</zone>
    <!-- deuxième zone -->
@@ -19,10 +19,10 @@
                 <param min="0" max="10" />
         </phenomenon>
 	<state name="state_2" >
-		<param iphen="2" ictrl="2" val_phen = "5" state_curr = "4" />
+		<param iphen="0.001" ictrl="0.1" val_phen ="1" state_curr = "4" />
 	</state>
 	<control name="control_2" type="TOR" >
-	        <param tresh_high = "600" ctrl_min = "5"/>
+	        <param tresh_high = "4" ctrl_min = "5"/>
 	</control>
     </zone>
 	<!--  serveur directement instancié dans le main -->
