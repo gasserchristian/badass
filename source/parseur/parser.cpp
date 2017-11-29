@@ -72,14 +72,14 @@ void parser()
 				cout << journal << endl;
 
 				//instance State_new
-				int state_ID = stoi(child2->Attribute( "ID"));
+				int state_ID = atoi(child2->Attribute( "ID"));
 				string state_name = child5->Attribute("name");
-				double iphen = stod(child6->Attribute("iphen"));
-				double ictrl = stod(child6->Attribute("ictrl"));
+				double iphen = atof(child6->Attribute("iphen"));
+				double ictrl = atof(child6->Attribute("ictrl"));
 				Process* State_new;
 				if (child6->Attribute("val_phen") && child6->Attribute("state_curr")){
-					double val_phen = stod(child6->Attribute("val_phen"));
-					double state_curr = stod(child6->Attribute("state_curr"));
+					double val_phen = atof(child6->Attribute("val_phen"));
+					double state_curr = atof(child6->Attribute("state_curr"));
 					State_new = new State(state_ID, state_name, iphen, ictrl,
 										  val_phen, state_curr);
 				}
@@ -108,10 +108,10 @@ void parser()
 					TiXmlElement* child4 = child3->FirstChild("param")->ToElement();
 
 					//Instancie la classe fille de processus
-					int rand_ID = stoi(child2->Attribute( "ID"));
+					int rand_ID = atoi(child2->Attribute( "ID"));
 					string rand_name = child3->Attribute( "name");
-					double rand_min = stod(child4->Attribute("min"));
-					double rand_max = stod(child4->Attribute("max"));
+					double rand_min = atof(child4->Attribute("min"));
+					double rand_max = atof(child4->Attribute("max"));
 					RAND* Rand_new = new RAND(rand_ID, rand_name, State_new,
 											  rand_min, rand_max);
 					Phenomenon_new = Rand_new;
@@ -144,10 +144,10 @@ void parser()
 					TiXmlElement* child8 = child7->FirstChild("param")->ToElement();
 
 					//instancie la classe fille de control
-					int TOR_ID = stoi(child2->Attribute( "ID"));
+					int TOR_ID = atoi(child2->Attribute( "ID"));
 					string TOR_name = child3->Attribute( "name");
-					double tresh_high = stod(child8->Attribute("tresh_high"));
-					double ctrl_min = stod(child8->Attribute("ctrl_min"));
+					double tresh_high = atof(child8->Attribute("tresh_high"));
+					double ctrl_min = atof(child8->Attribute("ctrl_min"));
 					TOR* TOR_new = new TOR(TOR_ID, TOR_name, Server_new, State_new,
 											tresh_high, ctrl_min);
 					Control_new = TOR_new;
@@ -171,7 +171,7 @@ void parser()
 		Process_list.push_back(Serv);
 
 		//Instance simulateur
-		int nTicks = stoi(child1->Attribute("nTicks"));
+		int nTicks = atoi(child1->Attribute("nTicks"));
 		Simulator* Simulator_new = new Simulator(Process_list, nTicks);
 
 		journal = "Parser complete, now running simulator...";
