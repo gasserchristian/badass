@@ -13,7 +13,8 @@
 
 class State: public Process {
 public:
-	State(int ID, string name, double i_phen, double i_ctrl, double val_phen, double state_curr);
+	State(int ID, string name, double i_phen, double i_ctrl, double val_phen,
+			double state_curr);
 	State(int ID, string name, double i_phen, double i_ctrl);
 	virtual ~State();
 
@@ -24,8 +25,10 @@ public:
 	void calcul(double val_ctrl);
 
 	virtual void update();
-	virtual double workValphen(double val = 0, bool set = false) { if(set){val_phen_ = val;} return val_phen_; }
-	virtual double etatCurr(double val = 0, bool set = false) {if(set){State_curr_ = val;} return State_curr_; }
+	virtual double workValphen(double val = 0, bool set = false)
+		{ if(set){val_phen_ = val;} return val_phen_; }
+	virtual double etatCurr(double val = 0, bool set = false)
+		{if(set){State_curr_ = val;} return State_curr_; }
 private:
 	double State_curr_;
 	double I_phen_;

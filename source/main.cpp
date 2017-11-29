@@ -21,29 +21,6 @@
 using namespace std;
 
 int main() {
-
-	parser();
-	/*
-	Simulator* Sim;
-	Sim = parser();  //The parser will return the adress of the simulator
-	Sim->run();
-	*/
-
-
-
-	/*
-	Process* server = new Server();
-	Process* etat1 = new State(6.5,1.0,5.0,6.4);
-	Process* phenomene1 = new Phenomenon(etat1, 0, 1000);
-	Process* controller1 = new Control(server, etat1, 20, 11);
-
-	phenomene1->update();
-	controller1->update();
-	etat1->update();
-
-	cout << controller1->etatCurr() << " " << controller1->workValphen() << endl;
-	*/
-
-
+	parser(); // le simulateur est lancé directement depuis la fonction parser
 	return 0;
 }
