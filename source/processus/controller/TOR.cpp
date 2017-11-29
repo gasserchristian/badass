@@ -32,7 +32,7 @@ void TOR::update() {
 	etat->set_valCtrl(valctr);
 
 	serv->log_file(etat->workValphen(0,false));
-	serv->log_file(17.9);
+	serv->log_file(etat_curr);
 	serv->log_file(valctr);
 }
 
