@@ -15,7 +15,6 @@ class State: public Process {
 public:
 	State(int ID, string name, double i_phen, double i_ctrl, double val_phen,
 			double state_curr);
-	State(int ID, string name, double i_phen, double i_ctrl);
 	virtual ~State();
 
 	//setters

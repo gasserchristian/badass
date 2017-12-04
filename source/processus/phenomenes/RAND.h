@@ -17,8 +17,8 @@ public:
 	virtual ~RAND();
 	void update();
 
-	virtual double workValphen(double val = 0, bool set = false) { return NULL; }
-	virtual double etatCurr(double val = 0, bool set = false) { return NULL; }
+	virtual double workValphen(double val = 0, bool set = false) { return 0.0; }
+	virtual double etatCurr(double val = 0, bool set = false) { return 0.0; }
 
 
 private:

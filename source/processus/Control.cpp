@@ -11,8 +11,10 @@ Control::Control() {
 
 }
 
-Control::Control(int ID, string name, double val_sat, double consigne) :
-			val_sat_(val_sat), consigne_(consigne), Process(ID, name) {
+Control::Control(int ID, string name, double val_sat, double consigne,
+		Process* server, Process* state) :
+			val_sat_(val_sat), consigne_(consigne), Process(ID, name),
+			server_(server), state_(state) {
 
 }
 

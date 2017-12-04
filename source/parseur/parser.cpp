@@ -10,7 +10,7 @@
 
 void parser()
 //Simulator* parser()
-{
+{/*
 	string journal;
 	vector<Process*> Process_list;
 	//vecteur contenant les pointeurs vers toutes les instances des classes filles de process
@@ -177,7 +177,7 @@ void parser()
 		journal = "Parser complete, now running simulator...";
 		Server_new->log_file(journal);
 		cout << journal << endl;
-		Simulator_new->run();
+		Simulator_new->run(); */
 }
 
 

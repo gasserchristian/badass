@@ -12,11 +12,6 @@ State::State(int ID, string name, double i_phen, double i_ctrl,
 	: State_curr_(state_curr), I_phen_(i_phen), I_ctrl_(i_ctrl),
 	  val_phen_(val_phen), val_ctrl_(0.0), Process(ID, name) {}
 
-State::State(int ID, string name, double i_phen, double i_ctrl)
-	: State_curr_(0.0), I_phen_(i_phen), I_ctrl_(i_ctrl), val_phen_(0.0),
-	  val_ctrl_(0.0), Process(ID, name) {
-}
-
 State::~State() {}
 
 
