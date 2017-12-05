@@ -20,9 +20,7 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
-void parser();
+*Simulator parser();
 
 
 

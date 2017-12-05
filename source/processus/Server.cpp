@@ -6,6 +6,7 @@
  */
 
 #include "Server.h"
+#include <iomanip>
 
 Server::Server(string tick_unit): tick_unit_(tick_unit) {}
 
@@ -33,7 +34,7 @@ void Server::gnu_header(int zone_count) {
 }
 
 void Server::log_file(double value) {
-	gnu_ << value << "    ";
+	gnu_ << setprecision(3) << setw(15) << value << "    "; //voir exo balle rebondissante pour alignement
 }
 
 void Server::gnu_endl() {

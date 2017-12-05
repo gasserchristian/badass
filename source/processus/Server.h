@@ -13,11 +13,10 @@
 #include <fstream>
 #include <vector>
 #include <string>
-using namespace std;
 
 class Server : public Process {
 public:
-	Server(string tick_unit);
+	Server(std::string tick_unit);
 	virtual ~Server();
 
 	virtual void update() {};
@@ -28,7 +27,7 @@ public:
 	void create_files();
 
 	//Journal
-	void log_file(string text);
+	void log_file(std::string text);
 
 	//GNU
 	void gnu_header(int zone_count);
@@ -39,9 +38,9 @@ public:
 	void close_files();
 
 private:
-	ofstream journal_;
-	ofstream gnu_;
-	string tick_unit_;
+	std::ofstream journal_;
+	std::ofstream gnu_;
+	std::string tick_unit_;
 };
 
 

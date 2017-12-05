@@ -34,7 +34,7 @@ void Simulator::run() {
 	}
 
 	//Fermeture des fichiers:
-	server->log_file("Simulation completed");
+	server->log_file("----- Simulation completed");
 	cout << "Simulation completed" << endl;
 	server->close_files();
 }

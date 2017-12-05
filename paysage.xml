@@ -1,28 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<landscape name="domotique" nTicks="1000" tick_unit="ms">
+<landscape name="domotique" nTicks="192" tick_unit="15min">
    <!-- première zone -->
    <zone name="zone_1" ID="1">
-       <phenomenon name="phen_1" type="random">
-	        <param min="0" max="10" />
+       <phenomenon name="temperature" type="sinus">
+            <param std_dev="2" offs="12" ampl="7" phase="1" period="1440"/> 
+            <!-- on pourrait rajouter sat_min et sat_max au besoin -->)
 	        <!-- le choix des paramètres est spécifique au type. donc pas d'ambiguité. -->
 	    </phenomenon>
-	    <state name="state_1">
-	        <param iphen="0.005" ictrl="0.35" val_phen = "10" state_curr = "10" />
+	    <state name="room_temp">
+	        <param iphen="0.1" ictrl="0.05" val_phen = "10" state_curr = "20" />
 	    </state>
-	    <control name="controle_1" type="TOR">
-	        <param tresh_high = "30" ctrl_min = "10"/>
+	    <control name="ctrl_temp" type="TOR">
+	        <param tresh_low = "19" tresh_high = "20"  ctrl_min = "5" ctrl_max = "50"/>
 	    </control>
 	</zone>
    <!-- deuxième zone -->
    <zone name="zone_2" ID="2">
-        <phenomenon name="phen_2" type="random">
-                <param min="0" max="10" />
+        <phenomenon name="pH" type="pulse">
+	         <param std_dev="1" v_low="5" v_high="8" t_del="10" t_rise="10" pwidth="20" 
+	                t_fall="15" period ="65"/>
         </phenomenon>
-	<state name="state_2" >
-		<param iphen="0.001" ictrl="0.1" val_phen ="1" state_curr = "4" />
+	<state name="aquarium_pH" >
+		<param iphen="0.1" ictrl="0.05" val_phen = "6.5" state_curr = "7" />
 	</state>
-	<control name="control_2" type="TOR" >
-	        <param tresh_high = "4" ctrl_min = "5"/>
+	<control name="pH_ctrl" type="proportionnal" >
+           <param set_point = "7" gain = "0.5" val_sat = "140"/>
 	</control>
     </zone>
 	<!--  serveur directement instancié dans le main -->
