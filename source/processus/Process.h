@@ -16,12 +16,12 @@ using namespace std;
 
 class Process {
 public:
-	Process();
+	Process() : ID_(0), name_("no name") {}
 	Process(unsigned ID, string name);
 	virtual ~Process();
 
 	// autres
-	virtual void update(unsigned tic) = 0;
+	virtual void update(int tic) = 0;
 	virtual double workValphen(double val = 0, bool set = false) = 0;
 	virtual double etatCurr(double val = 0, bool set = false) = 0;
 

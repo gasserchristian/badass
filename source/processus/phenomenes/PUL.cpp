@@ -7,12 +7,7 @@
 
 #include "PUL.h"
 
-PUL::PUL() {
-	// TODO Auto-generated constructor stub
+void PUL::update(int tic) {
 
-}
-
-PUL::~PUL() {
-	// TODO Auto-generated destructor stub
 }
 

@@ -7,10 +7,6 @@
 
 #include "Process.h"
 
-Process::Process() {
-
-}
-
 Process::Process(unsigned ID, string name) : ID_(ID), name_(name) {
 
 }

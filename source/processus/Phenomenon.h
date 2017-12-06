@@ -21,7 +21,7 @@ public:
 
 	// autres
 
-	virtual void update(unsigned tic) = 0;
+	virtual void update(int tic) = 0;
 	virtual double workValphen(double val = 0, bool set = false) { return 0.0; }
 	virtual double etatCurr(double val = 0, bool set = false) { return 0.0; }
 protected:

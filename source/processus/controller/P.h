@@ -22,7 +22,7 @@ public:
 		{ return state_->workValphen(); }
 	virtual double etatCurr(double val = 0, bool set = false)
 		{ return state_->etatCurr(); }
-	void update(unsigned tic);
+	void update(int tic);
 private:
 	double set_point_;
 	double gain_;

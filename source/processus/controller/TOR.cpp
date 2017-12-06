@@ -18,7 +18,7 @@ TOR::~TOR() {
 	// TODO Auto-generated destrucTOR stub
 }
 
-void TOR::update(unsigned tic) {
+void TOR::update(int tic) {
 	double etat_curr, valctr;
 	Server* serv = dynamic_cast <Server*> (server_);
 	etat_curr = state_->etatCurr();
