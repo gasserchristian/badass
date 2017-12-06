@@ -15,7 +15,7 @@ State::State(int ID, string name, double i_phen, double i_ctrl,
 State::~State() {}
 
 
-void State::update() {
+void State::update(double tic) {
 	State_curr_ = State_curr_
 			+ (val_phen_ - State_curr_) * I_phen_
 			+ (val_ctrl_ - State_curr_) * I_ctrl_;

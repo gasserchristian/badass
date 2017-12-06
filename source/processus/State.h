@@ -23,7 +23,7 @@ public:
 	//autres
 	void calcul(double val_ctrl);
 
-	virtual void update();
+	virtual void update(double tic);
 	virtual double workValphen(double val = 0, bool set = false)
 		{ if(set){val_phen_ = val;} return val_phen_; }
 	virtual double etatCurr(double val = 0, bool set = false)

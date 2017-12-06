@@ -14,12 +14,10 @@
 
 class TOR : public Control {
 public:
-	/*TOR(int ID, string name, Process* server, Process* state,
-		double val_sat, double consigne);*/
 	TOR(int ID, string name, Process* server, Process* state,
 			double tresh_low, double tresh_high, double ctrl_min, double ctrl_max);
 	virtual ~TOR();
-	void update();
+	void update(double tic);
 
 
 	virtual double workValphen(double val = 0, bool set = false)

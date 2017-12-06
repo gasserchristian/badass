@@ -21,7 +21,7 @@ public:
 	virtual ~Process();
 
 	// autres
-	virtual void update() = 0;
+	virtual void update(double tic) = 0;
 	virtual double workValphen(double val = 0, bool set = false) = 0;
 	virtual double etatCurr(double val = 0, bool set = false) = 0;
 

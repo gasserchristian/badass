@@ -12,7 +12,7 @@ Server::Server(double nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tic
 
 Server::~Server() {}
 
-void Server::update() {
+void Server::update(double tic) {
 	static int iTick = 0;
 	iTick++;
 
