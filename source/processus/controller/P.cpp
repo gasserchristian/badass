@@ -7,17 +7,6 @@
 
 #include "P.h"
 
-P::P(int ID, string name, Server* server, State* state,
-		double set_point, double gain, double sat) :
-	set_point_(set_point), gain_(gain), Control(ID, name, gain, set_point, server, state), sat_(sat) {
-
-}
-
-P::~P() {
-
-}
-
-
 void P::update(int tic) {
 	double etat_curr, valctr;
 	Server* serv = dynamic_cast <Server*> (server_);

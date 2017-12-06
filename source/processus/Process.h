@@ -17,8 +17,8 @@ using namespace std;
 class Process {
 public:
 	Process() : ID_(0), name_("no name") {}
-	Process(unsigned ID, string name);
-	virtual ~Process();
+	Process(unsigned ID, string name) : ID_(ID), name_(name) {}
+	virtual ~Process() {}
 
 	// autres
 	virtual void update(int tic) = 0;

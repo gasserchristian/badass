@@ -19,7 +19,3 @@ Control::Control(int ID, string name, double val_sat, double consigne,
 
 }
 
-Control::~Control() {
-	// TODO Auto-generated destructor stub
-}
-

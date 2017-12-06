@@ -9,7 +9,7 @@
 #include <limits>
 
 void parse(Simulator* Sim)
-{
+{/*
 	string journal;
 	vector<Process*> Process_list;
 	//vecteur contenant les pointeurs vers toutes les instances des classes filles de process
@@ -119,7 +119,7 @@ void parse(Simulator* Sim)
 					/*SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
 											sin_std_dev, sin_offs, sin_ampl, sin_period,
 											sin_phase, sin_sat_max, sin_sat_min);
-					Phenomenon_new = sin_new;*/
+					Phenomenon_new = sin_new;
 					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name +
 									 ", std_dev: " + to_string(sin_std_dev) +
 									 ", offset: " + to_string(sin_offs) + ", amplitude: " + to_string(sin_ampl) +
@@ -148,7 +148,7 @@ void parse(Simulator* Sim)
 											pul_std_dev, pul_v_low, pul_v_high,
 											pul_t_del, pul_t_rise, pul_pwidth,
 											pul_t_fall, pul_period);
-					Phenomenon_new = pul_new;*/
+					Phenomenon_new = pul_new;
 					journal = string("[i] Pulse ID:") + pul_ID + ", name: " + pul_name +
 									 ", std_dev: " + to_string(pul_std_dev) +
 									 ", v_low: " + to_string(pul_v_low) + ", v_high: " + to_string(pul_v_high) +
@@ -203,7 +203,7 @@ void parse(Simulator* Sim)
 					double val_sat = atof(child8->Attribute("val_sat"));
 					/*P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
-					Control_new = P_new;*/
+					Control_new = P_new;
 					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
 									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
 									 ", val_sat: " + string(val_sat);
@@ -231,7 +231,7 @@ void parse(Simulator* Sim)
 
 		journal = "[i] ---- Parser complete, now running simulator... ----";
 		Server_new->log_journal(journal);
-		cout << journal << endl;
+		cout << journal << endl;*/
 }
 
 

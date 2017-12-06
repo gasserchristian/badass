@@ -13,7 +13,7 @@ Server::Server(double nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tic
 Server::~Server() {}
 
 void Server::update(int tic) {
-
+/*
 	//Write in GNU
 	gnu_ << setprecision(3) << setw(15) << tic;
 	for(unsigned int i=0; i< temp_data_.size(); i++) {
@@ -27,7 +27,7 @@ void Server::update(int tic) {
 		Server::log_journal(journal);
 		cout << journal << endl;
 		Server::close_files();
-	}
+	}*/
 }
 
 

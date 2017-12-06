@@ -14,7 +14,7 @@ class Control: public Process {
 public:
 	Control();
 	Control(int ID, string name, double val_sat, double consigne, Process* server, Process* state);
-	virtual ~Control();
+	virtual ~Control() {};
 
 	//autres
 	void update(int tic) = 0;

@@ -18,7 +18,7 @@ class Server : public Process {
 public:
 	Server(double nTicks, std::string tick_unit);
 	virtual ~Server();
-	void update(unsigned tic);
+	void update(int tic);
 
 	//create and open files
 	void create_files();

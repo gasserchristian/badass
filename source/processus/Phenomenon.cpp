@@ -11,7 +11,3 @@ Phenomenon::Phenomenon(unsigned ID, string name, Process* state)
 	: Process(ID, name), state_(state)  {
 }
 
-Phenomenon::~Phenomenon() {
-	// TODO Auto-generated destructor stub
-}
-

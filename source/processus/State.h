@@ -13,9 +13,11 @@
 
 class State: public Process {
 public:
-	State(int ID, string name, double i_phen, double i_ctrl, double val_phen,
-			double state_curr);
-	virtual ~State();
+	State(int ID, string name, double i_phen, double i_ctrl,
+				 double val_phen, double state_curr) :
+				 Process(ID, name), I_phen_(i_phen), I_ctrl_(i_ctrl),
+				 val_phen_(val_phen), State_curr_(0.0), val_ctrl_(0.0) {}
+	virtual ~State() {}
 
 	//setters
 	void set_valCtrl(double val) { val_ctrl_ = val; }

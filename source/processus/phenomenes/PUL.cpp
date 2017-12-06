@@ -7,7 +7,8 @@
 
 #include "PUL.h"
 
-void PUL::update(int tic) {
 
+void PUL::update(int tic) {
+	//tic : intervale
 }
 
