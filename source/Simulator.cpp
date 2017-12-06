@@ -8,8 +8,8 @@
 
 #include "Simulator.h"
 
-Simulator::Simulator(int nTicks) :
-nTicks_(nTicks), Process_list_() {}
+Simulator::Simulator() :
+nTicks_(), Process_list_() {}
 
 Simulator::~Simulator() {}
 

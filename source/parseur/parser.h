@@ -9,19 +9,20 @@
 #define SOURCE_PARSER_H_
 
 #include "../../TinyXML/tinyxml.h"
+#include "../Simulator.h"
 #include "../processus/Phenomenon.h"
 #include "../processus/State.h"
 #include "../processus/Control.h"
 #include "../processus/Server.h"
 #include "../processus/Process.h"
-#include "../Simulator.h"
+#include "../processus/controller/TOR.h"
+#include "../processus/controller/P.h"
+#include "../processus/phenomenes/PUL.h"
+#include "../processus/phenomenes/SIN.h"
 #include <vector>
 #include <string>
-#include "../processus/controller/TOR.h"
 
-void parser();
-//Simulator* parser();
-
+void parser(Simulator* Sim);
 
 #endif /* SOURCE_PARSER_H_ */
 

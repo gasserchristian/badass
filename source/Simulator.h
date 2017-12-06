@@ -20,10 +20,12 @@ const int checkpoints = 5;
 
 class Simulator {
 public:
-	Simulator(int nTicks);
+	Simulator();
 	virtual ~Simulator();
 
 	void run();
+
+	void set_nTicks(double nTicks) {nTicks_ = nTicks;}
 
 	void set_process_list(Process* process_new) {Process_list_.push_back(process_new);}
 
