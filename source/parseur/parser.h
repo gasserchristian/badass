@@ -15,12 +15,13 @@
 #include "../processus/Server.h"
 #include "../processus/Process.h"
 #include "../processus/phenomenes/RAND.h"
-#include "../processus/controller/TOR.h"
 #include "../Simulator.h"
 #include <vector>
 #include <string>
+#include "../processus/controller/TOR.h"
 
-Simulator* parser();
+void parser();
+//Simulator* parser();
 
 #endif /* SOURCE_PARSER_H_ */
 

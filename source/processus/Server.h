@@ -8,7 +8,7 @@
 #ifndef SOURCE_SERVER_H_
 #define SOURCE_SERVER_H_
 #include "Process.h"
-#include "..\Simulator.h"
+#include "../Simulator.h"
 #include <iostream>
 #include <fstream>
 #include <vector>

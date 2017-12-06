@@ -21,7 +21,7 @@
 using namespace std;
 
 int main() {
-	Simulator* Simulator_new = parser(); // le simulateur est lancé directement depuis la fonction parser
-	Simulator_new->run;
+	//Simulator* Simulator_new = parser(); // le simulateur est lancé directement depuis la fonction parser
+	//Simulator_new->run;
 	return 0;
 }
