@@ -18,7 +18,7 @@ using namespace std;
 
 class Simulator {
 public:
-	Simulator(vector<Process*> Process_list, int nTicks);
+	Simulator(int nTicks);
 	virtual ~Simulator();
 
 	void run();

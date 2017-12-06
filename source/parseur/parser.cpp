@@ -9,7 +9,7 @@
 #include <limits>
 
 
-double parser()
+Simulator* parser()
 {
 	string journal;
 	vector<Process*> Process_list;
@@ -33,7 +33,8 @@ double parser()
 
 		//instancie de la classe serveur
 		string tick_unit = child1->Attribute("tick_unit");
-		Server* Server_new = new Server(tick_unit);
+		string nTicks = atof(child1->Attribute("nTicks"));
+		Process* Server_new = new Server(nTicks, tick_unit);
 
 		Server_new->create_files(); 			//création du fichier journal et gnu
 		journal = "---- Parsing the following values:";
@@ -50,6 +51,7 @@ double parser()
 		Simulator* Simulator_new = new Simulator(child1->Attribute("nTicks"));
 
 		//--------------------- EXTRACTION DES ZONES: NIVEAU 1 -----------------------
+		int zone_count = 0;
 		for( TiXmlElement* child2 = child1->FirstChild("zone")->ToElement();
 			child2;
 			child2=child2->NextSiblingElement())
@@ -115,7 +117,7 @@ double parser()
 					double sin_offs=0, sin_phase=0,
 							sin_sat_max= std::numeric_limits<double>::infinity(),
 							sin_sat_min=-sin_sat_max;
-					if((child4->Attribute("offs")) sin_offs = atof(child4->Attribute("offs"));
+					if(child4->Attribute("offs")) sin_offs = atof(child4->Attribute("offs"));
 					if(child4->Attribute("phase")) sin_phase = atof(child4->Attribute("phase"));
 					if(child4->Attribute("sat_max")) sin_sat_max = atof(child4->Attribute("sat_max"));
 					if(child4->Attribute("sat_min")) sin_sat_min = atof(child4->Attribute("sat_min"));
@@ -218,10 +220,11 @@ double parser()
 				Simulator_new->set_process_list(Phenomenon_new);
 				Simulator_new->set_process_list(State_new);
 				Simulator_new->set_process_list(Control_new);
+				zone_count++;
 			}
 		}
-		Process* Serv = Server_new;
-		Simulator_new->set_process_list(Serv);
+		Simulator_new->set_process_list(Server_new);
+		Server_new->gnu_header(zone_count);
 
 		//Instance simulateur
 		int nTicks = atoi(child1->Attribute("nTicks"));

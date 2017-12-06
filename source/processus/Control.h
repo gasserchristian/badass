@@ -17,7 +17,7 @@ public:
 	virtual ~Control();
 
 	//autres
-	virtual void update() = 0;
+	void update() = 0;
 	virtual double workValphen(double val = 0, bool set = false)
 		{ return state_->workValphen(); }
 	virtual double etatCurr(double val = 0, bool set = false)

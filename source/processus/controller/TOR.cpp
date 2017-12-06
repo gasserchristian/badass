@@ -25,7 +25,7 @@ void TOR::update() {
 	State* etat = dynamic_cast <State*> ( state_ );
 	if(etat_curr > tresh_high_) {
 		valctr = ctrl_min_;
-		serv->log_file(string("State ")
+		serv->log_journal(string("State ")
 				+ to_string(ID_)
 				+ " (\"" + string(name_) + "\"). Relative error command/state "
 				+ to_string((etat_curr - consigne_)/consigne_*100)
@@ -33,7 +33,7 @@ void TOR::update() {
 	}
 	else if(etat_curr < tresh_low_) {
 		valctr = ctrl_max_;
-		serv->log_file(string("State ")
+		serv->log_journal(string("State ")
 				+ to_string(ID_)
 				+ " (\"" + string(name_) + "\"). Relative error command/state "
 				+ to_string((etat_curr - consigne_)/consigne_*100)
@@ -45,8 +45,8 @@ void TOR::update() {
 
 	etat->set_valCtrl(valctr);
 
-	serv->log_file(etat->workValphen(0,false));
-	serv->log_file(etat_curr);
-	serv->log_file(valctr);
+	serv->log_value(etat->workValphen(0,false));
+	serv->log_value(etat_curr);
+	serv->log_value(valctr);
 }
 

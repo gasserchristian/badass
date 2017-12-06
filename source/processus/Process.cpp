@@ -19,5 +19,3 @@ Process::~Process() {
 	// TODO Auto-generated destructor stub
 }
 
-
-

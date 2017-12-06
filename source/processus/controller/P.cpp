@@ -27,7 +27,7 @@ void P::update() {
 
 	if(valctr > sat_) {
 		valctr = sat_;
-		serv->log_file(string("State ")
+		serv->log_journal(string("State ")
 				+ to_string(ID_)
 				+ " (\"" + string(name_) + "\"). Relative error command/state "
 				+ to_string((etat_curr - consigne_)/consigne_*100)
@@ -35,7 +35,7 @@ void P::update() {
 	}
 	else if(valctr < -sat_) {
 		valctr = - sat_;
-		serv->log_file(string("State ")
+		serv->log_journal(string("State ")
 				+ to_string(ID_)
 				+ " (\"" + string(name_) + "\"). Relative error command/state "
 				+ to_string((etat_curr - consigne_)/consigne_*100)
@@ -44,7 +44,7 @@ void P::update() {
 
 	etat->set_valCtrl(valctr);
 
-	serv->log_file(etat->workValphen(0,false));
-	serv->log_file(etat_curr);
-	serv->log_file(valctr);
+	serv->log_value(etat->workValphen(0,false));
+	serv->log_value(etat_curr);
+	serv->log_value(valctr);
 }

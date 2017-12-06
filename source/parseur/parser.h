@@ -20,9 +20,7 @@
 #include <vector>
 #include <string>
 
-*Simulator parser();
-
-
+Simulator* parser();
 
 #endif /* SOURCE_PARSER_H_ */
 
