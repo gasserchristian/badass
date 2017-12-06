@@ -20,12 +20,12 @@ Simulator* parser()
 	bool loadOkay = doc.LoadFile();
 	if ( !loadOkay )
 	{
-		printf( "Lecture impossible du fichier 'paysage.xml'. Error='%s' \n",
+		printf( "[e] Impossible to read 'paysage.xml'. Error='%s' \n",
 				doc.ErrorDesc() );
 		exit( 1 );
 	} else
 	{
-		printf( "Lecture correcte du fichier 'paysage.xml'.\n");
+		printf( "[i] Successful read of 'paysage.xml'.\n");
 	}
 	TiXmlElement* child1 = doc.FirstChildElement();
 		//méthode d'élément permet d'accéder au premier fils de l'arborescence
@@ -36,19 +36,22 @@ Simulator* parser()
 		string nTicks = atof(child1->Attribute("nTicks"));
 		Server* Server_new = new Server(nTicks, tick_unit);
 
-		Server_new->create_files(); 			//création du fichier journal et gnu
-		journal = "---- Parsing the following values:";
+		//création du fichier journal et gnu
+		Server_new->create_files();
+		journal = "[i] ---- Parsing the following values: ----";
 		Server_new->log_journal(journal);
-		journal = string("Nombre de Ticks : ") + child1->Attribute("nTicks");
+		journal = string("[i] Ticks number : ") + child1->Attribute("nTicks");
 		Server_new->log_journal(journal);
-		cout << journal << endl;
-		journal = string("Durée de la simulation : ") + child1->Attribute("nTicks")
+		journal = string("[i] Simulation duration : ") + child1->Attribute("nTicks")
 						 + child1->Attribute("tick_unit");
 		Server_new->log_journal(journal);
-		cout << journal << endl;
 
 		//instancie le simulateur
 		Simulator* Simulator_new = new Simulator(child1->Attribute("nTicks"));
+		journal = string("[i] Server and Simulator created");
+		Server_new->log_journal(journal);
+		cout << journal << endl;
+
 
 		//--------------------- EXTRACTION DES ZONES: NIVEAU 1 -----------------------
 		int zone_count = 0;
@@ -58,28 +61,21 @@ Simulator* parser()
 		{ //BOUCLE pour extraire l'ensemble des triplets "zone" du paysage
 			// Détection d'un élément zone NIVEAU 2
 			if (strcmp(child2->Value(),"zone")==0){
-				journal = string("Nom de la zone : ") + child2->Attribute("name");
+				journal = string("[i] New zone : ") + child2->Attribute("name");
 				Server_new->log_journal(journal);
 				cout << journal << endl;
 				// EXTRACTION attribut nom de la zone: NIVEAU 3
-				journal = string("ID unique de la zone : ") + child2->Attribute( "ID");
+				journal = string("[i] Zone ID : ") + child2->Attribute( "ID");
 				Server_new->log_journal(journal);
-				cout << journal << endl;
 				// ---------EXTRACTION attribut ID de la zone: NIVEAU 3 ------------
 				// ------------- EXTRACTION DE l'ETAT DE LA ZONE: NIVEAU 2
 				TiXmlElement* child5 = child2->FirstChild("state")->ToElement();
-				journal = string("Nom de l'état : ") + child5->Attribute( "name");
-				Server_new->log_journal(journal);
-				cout << journal << endl;
-				TiXmlElement* child6 = child5->FirstChild("param")->ToElement();
-				journal = string("Valeur iphen : ") + child6->Attribute( "iphen");
-				Server_new->log_journal(journal);
-				cout << journal << endl;
-				journal = string("Valeur ictrl : ") + child6->Attribute( "ictrl");
+				journal = string("[i] New state : ") + child5->Attribute( "name");
 				Server_new->log_journal(journal);
 				cout << journal << endl;
 
 				//instance State_new
+				TiXmlElement* child6 = child5->FirstChild("param")->ToElement();
 				int state_ID = atoi(child2->Attribute( "ID"));
 				string state_name = child5->Attribute("name");
 				double iphen = atof(child6->Attribute("iphen"));
@@ -87,29 +83,28 @@ Simulator* parser()
 				double val_phen = 0, state_curr = 0; //optional values
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
-				Process* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-
-
-
-				// EXTRACTION attribut nom de l'état: NIVEAU 3
+				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
+				journal = string("[i] ID : ") + state_ID + ", name: " + state_name +
+								 ", iphen" + string(iphen) + ", ictrl: " + string(ictrl) +
+								 ", val_phen: " + string(val_phen) + ", state_curr: " +
+								 string(state_curr);
+				Server_new->log_journal(journal);
 
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
 				TiXmlElement* child3 = child2->FirstChild("phenomenon")->ToElement () ;
 				Phenomenon* Phenomenon_new;
-				journal = string("Nom du phénomène : ") + child3->Attribute( "name");
+				journal = string("[i] New phenomenon : ") + child3->Attribute( "name");
 				Server_new->log_journal(journal);
 				cout << journal << endl;
 				// EXTRACTION attribut nom du phenomene: NIVEAU 3
-				journal = string("type du phénomène : ") + child3->Attribute( "type");
+				journal = string("[i] Phenomenon type : ") + child3->Attribute( "type");
 				Server_new->log_journal(journal);
-				cout << journal << endl;
-				//----- EXTRACTION attribut type du phenomene: NIVEAU 3 ----------
-				// EXTRACTION DES PARAMETRES DU PHENOMENE SELON SON TYPE : NIVEAU 4
+
+				// EXTRACTION DES PARAMETRES DU PHENOMENE SELON SON TYPE
 				if (strcmp(child3->Attribute("type"),"sinus")==0){
-					// Détection d'un phénomène random
 					TiXmlElement* child4 = child3->FirstChild("param")->ToElement();
 
-					//Instancie la classe fille de processus
+					//Instancie la classe fille de phénomène
 					int sin_ID = atoi(child2->Attribute( "ID"));
 					string sin_name = child3->Attribute( "name");
 					double sin_std_dev = atof(child4->Attribute("std_dev"));
@@ -125,14 +120,13 @@ Simulator* parser()
 											sin_std_dev, sin_offs, sin_ampl,
 											sin_phase, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
+					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name +
+									 ", std_dev: " + string(sin_std_dev) +
+									 ", offset: " + string(sin_offs) + ", amplitude: " + string(sin_ampl) +
+									 ", phase: " + string(sin_phase) + ", sat_max: " + string(sin_sat_max) +
+									 ", sat_min: " + string(sin_sat_min);
+					Server_new->log_journal(journal);
 
-					//Journalisation de la nouvelle instance
-					journal = string("phénomène minimum : ") + child4->Attribute( "min");
-					Server_new->log_journal(journal);
-					cout << journal << endl;
-					journal = string("phénomène maximum : ") + child4->Attribute( "max");
-					Server_new->log_journal(journal);
-					cout << journal << endl;
 				}
 				if (strcmp(child3->Attribute("type"),"pulse")==0){
 					// Détection d'un phénomène random
@@ -154,31 +148,28 @@ Simulator* parser()
 											pul_t_del, pul_t_rise, pul_pwidth,
 											pul_t_fall, pul_period);
 					Phenomenon_new = pul_new;
-
-					//Journalisation de la nouvelle instance
-					journal = string("phénomène minimum : ") + child4->Attribute( "min");
+					journal = string("[i] Pulse ID:") + pul_ID + ", name: " + pul_name +
+									 ", std_dev: " + string(pul_std_dev) +
+									 ", v_low: " + string(pul_v_low) + ", v_high: " + string(pul_v_high) +
+									 ", t_del: " + string(pul_t_del) + ", t_rise: " + string(pul_t_rise) +
+									 ", pwidth: " + string(pul_pwidth) + ", t_fall: " + string(pul_t_fall) +
+									 ", period: " + string(pul_period);
 					Server_new->log_journal(journal);
-					cout << journal << endl;
-					journal = string("phénomène maximum : ") + child4->Attribute( "max");
-					Server_new->log_journal(journal);
-					cout << journal << endl;
 				}
 
 
 				// ------- EXTRACTION DU CONTROLE DE LA ZONE: NIVEAU 2
 				TiXmlElement* child7 = child2->FirstChild("control")->ToElement();
 				Control* Control_new;
-				journal = string("Nom du controle : ") + child7->Attribute( "name");
+				journal = string("[i] New control : ") + child7->Attribute( "name");
 				Server_new->log_journal(journal);
 				cout << journal << endl;
 				// EXTRACTION attribut nom du contrôle: NIVEAU 3
-				journal = string("Type du controle : ") + child7->Attribute( "type");
+				journal = string("[i] Control type : ") + child7->Attribute( "type");
 				Server_new->log_journal(journal);
-				cout << journal << endl;
 				// EXTRACTION attribut type du contrôle: NIVEAU 3
 				if (strcmp(child7->Attribute("type"),"TOR")==0){
 					// Détection d'un controleur de type tout ou rien
-
 					TiXmlElement* child8 = child7->FirstChild("param")->ToElement();
 
 					//instancie la classe fille de control
@@ -191,6 +182,12 @@ Simulator* parser()
 					TOR* TOR_new = new TOR(TOR_ID, TOR_name, Server_new, State_new,
 											tresh_low, tresh_high, ctrl_min, ctrl_max);
 					Control_new = TOR_new;
+					journal = string("[i] TOR ID:") + TOR_ID + ", name: " + TOR_name +
+									 ", tresh_low: " + string(tresh_low) + ", tresh_high: " + string(tresh_high) +
+									 ", ctrl_min: " + string(ctrl_min) + ", ctrl_max: " + string(ctrl_max);
+					Server_new->log_journal(journal);
+
+
 				}
 				if (strcmp(child7->Attribute("type"),"P")==0){
 					// Détection d'un controleur de type proportionnel
@@ -206,19 +203,23 @@ Simulator* parser()
 					P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
 					Control_new = P_new;
+					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
+									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
+									 ", val_sat: " + string(val_sat);
+					Server_new->log_journal(journal);
 				}
 
 				else {
-					journal =  string("Ce n'est pas une zone, il s'agit de la balise : ")
+					journal =  string("[i] Ce n'est pas une zone, il s'agit de la balise : ")
 									 + child2->Value();
-					Server_new->log_journal(journal);
 					cout << journal << endl;
 				}
 				// élément autre que zone
 
 				// population de la liste de processus dans le bon ordre
 				Simulator_new->set_process_list(Phenomenon_new);
-				Simulator_new->set_process_list(State_new);
+				Process* State_n = State_new;
+				Simulator_new->set_process_list(State_n);
 				Simulator_new->set_process_list(Control_new);
 				zone_count++;
 			}
@@ -227,7 +228,7 @@ Simulator* parser()
 		Process* Serv = Server_new;
 		Simulator_new->set_process_list(Serv);
 
-		journal = "----- Parser complete, now running simulator...";
+		journal = "[i] ---- Parser complete, now running simulator... ----";
 		Server_new->log_journal(journal);
 		cout << journal << endl;
 

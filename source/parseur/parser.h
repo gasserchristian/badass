@@ -24,5 +24,4 @@ Simulator* parser();
 
 #endif /* SOURCE_PARSER_H_ */
 
-//Simulator* parser();
 

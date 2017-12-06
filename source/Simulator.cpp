@@ -18,6 +18,9 @@ void Simulator::run() {
 	for(int iTick = 0; iTick < nTicks_; iTick++) {
 		for(int i = 0, c = Process_list_.size(); i < c; i ++) {
 			Process_list_[i]->update();
+			if((iTick*checkpoints)%nTicks_==0) {
+				cout << "[i] Simulation status: " << iTick << "% completed";
+			}
 		}
 	}
 }
