@@ -5,7 +5,7 @@
        <phenomenon name="temperature" type="sinus">
             <param std_dev="2" offs="12" ampl="7" phase="1" period="1440"/> 
             <!-- on pourrait rajouter sat_min et sat_max au besoin -->)
-	        <!-- le choix des paramètres est spécifique au type. donc pas d'ambiguité. -->
+	         <!-- le choix des paramètres est spécifique au type. donc pas d'ambiguité. -->
 	    </phenomenon>
 	    <state name="room_temp">
 	        <param iphen="0.1" ictrl="0.05" val_phen = "10" state_curr = "20" />

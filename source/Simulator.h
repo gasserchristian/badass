@@ -8,7 +8,6 @@
 #ifndef SOURCES_SIMULATOR_H_
 #define SOURCES_SIMULATOR_H_
 
-#include "./parseur/parser.h"
 #include "./processus/Process.h"
 #include "./processus/Server.h"
 #include <string>
@@ -20,10 +19,12 @@ const int checkpoints = 5;
 
 class Simulator {
 public:
-	Simulator(int nTicks);
+	Simulator();
 	virtual ~Simulator();
 
 	void run();
+
+	void set_nTicks(unsigned nTicks) {nTicks_ = nTicks;}
 
 	void set_process_list(Process* process_new) {Process_list_.push_back(process_new);}
 
@@ -31,7 +32,7 @@ public:
 
 private:
 	vector<Process*> Process_list_;
-	int nTicks_;
+	unsigned nTicks_;
 };
 
 #endif /* SOURCES_SIMULATOR_H_ */

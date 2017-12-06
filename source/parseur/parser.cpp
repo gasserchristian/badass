@@ -8,8 +8,7 @@
 #include "parser.h"
 #include <limits>
 
-void parser()
-//Simulator* parser()
+void parse(Simulator* Sim)
 {
 	string journal;
 	vector<Process*> Process_list;
@@ -33,7 +32,7 @@ void parser()
 
 		//instancie de la classe serveur
 		string tick_unit = child1->Attribute("tick_unit");
-		double nTicks = atof(child1->Attribute("nTicks"));
+		int nTicks = atoi(child1->Attribute("nTicks"));
 		Server* Server_new = new Server(nTicks, tick_unit);
 
 		//création du fichier journal et gnu
@@ -47,8 +46,8 @@ void parser()
 		Server_new->log_journal(journal);
 
 		//instancie le simulateur
-		Simulator* Simulator_new = new Simulator(atof(child1->Attribute("nTicks")));
-		journal = string("[i] Server and Simulator created");
+		Sim->set_nTicks(nTicks);
+		journal = string("[i] Server created");
 		Server_new->log_journal(journal);
 		cout << journal << endl;
 
@@ -85,9 +84,9 @@ void parser()
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
 				journal = string("[i] ID : " + state_ID + ", name: " + state_name +
-								 ", iphen" + string(iphen) + ", ictrl: " + string(ictrl) +
-								 ", val_phen: " + string(val_phen) + ", state_curr: " +
-								 string(state_curr));
+								 ", iphen" + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
+								 ", val_phen: " + to_string(val_phen) + ", state_curr: " +
+								 to_string(state_curr));
 				Server_new->log_journal(journal);
 
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
@@ -109,6 +108,7 @@ void parser()
 					string sin_name = child3->Attribute( "name");
 					double sin_std_dev = atof(child4->Attribute("std_dev"));
 					double sin_ampl = atof(child4->Attribute("ampl"));
+					double sin_period = atof(child4->Attribute("period"));
 					double sin_offs=0, sin_phase=0,
 							sin_sat_max= std::numeric_limits<double>::infinity(),
 							sin_sat_min=-sin_sat_max;
@@ -116,15 +116,16 @@ void parser()
 					if(child4->Attribute("phase")) sin_phase = atof(child4->Attribute("phase"));
 					if(child4->Attribute("sat_max")) sin_sat_max = atof(child4->Attribute("sat_max"));
 					if(child4->Attribute("sat_min")) sin_sat_min = atof(child4->Attribute("sat_min"));
-					SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
-											sin_std_dev, sin_offs, sin_ampl,
+					/*SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
+											sin_std_dev, sin_offs, sin_ampl, sin_period,
 											sin_phase, sin_sat_max, sin_sat_min);
-					Phenomenon_new = sin_new;
+					Phenomenon_new = sin_new;*/
 					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name +
-									 ", std_dev: " + string(sin_std_dev) +
-									 ", offset: " + string(sin_offs) + ", amplitude: " + string(sin_ampl) +
-									 ", phase: " + string(sin_phase) + ", sat_max: " + string(sin_sat_max) +
-									 ", sat_min: " + string(sin_sat_min);
+									 ", std_dev: " + to_string(sin_std_dev) +
+									 ", offset: " + to_string(sin_offs) + ", amplitude: " + to_string(sin_ampl) +
+									 ", phase: " + to_string(sin_phase) + ", period: " + to_string(sin_period) +
+									 ", sat_max: " + to_string(sin_sat_max) +
+									 ", sat_min: " + to_string(sin_sat_min);
 					Server_new->log_journal(journal);
 
 				}
@@ -143,17 +144,17 @@ void parser()
 					double pul_pwidth = atof(child4->Attribute("v_pwidth"));
 					double pul_t_fall = atof(child4->Attribute("v_t_fall"));
 					double pul_period = atof(child4->Attribute("v_period"));
-					PUL* pul_new = new PUL(pul_ID, pul_name, State_new,
+					/*PUL* pul_new = new PUL(pul_ID, pul_name, State_new,
 											pul_std_dev, pul_v_low, pul_v_high,
 											pul_t_del, pul_t_rise, pul_pwidth,
 											pul_t_fall, pul_period);
-					Phenomenon_new = pul_new;
+					Phenomenon_new = pul_new;*/
 					journal = string("[i] Pulse ID:") + pul_ID + ", name: " + pul_name +
-									 ", std_dev: " + string(pul_std_dev) +
-									 ", v_low: " + string(pul_v_low) + ", v_high: " + string(pul_v_high) +
-									 ", t_del: " + string(pul_t_del) + ", t_rise: " + string(pul_t_rise) +
-									 ", pwidth: " + string(pul_pwidth) + ", t_fall: " + string(pul_t_fall) +
-									 ", period: " + string(pul_period);
+									 ", std_dev: " + to_string(pul_std_dev) +
+									 ", v_low: " + to_string(pul_v_low) + ", v_high: " + to_string(pul_v_high) +
+									 ", t_del: " + to_string(pul_t_del) + ", t_rise: " + to_string(pul_t_rise) +
+									 ", pwidth: " + to_string(pul_pwidth) + ", t_fall: " + to_string(pul_t_fall) +
+									 ", period: " + to_string(pul_period);
 					Server_new->log_journal(journal);
 				}
 
@@ -183,8 +184,8 @@ void parser()
 											tresh_low, tresh_high, ctrl_min, ctrl_max);
 					Control_new = TOR_new;
 					journal = string("[i] TOR ID:") + TOR_ID + ", name: " + TOR_name +
-									 ", tresh_low: " + string(tresh_low) + ", tresh_high: " + string(tresh_high) +
-									 ", ctrl_min: " + string(ctrl_min) + ", ctrl_max: " + string(ctrl_max);
+									 ", tresh_low: " + to_string(tresh_low) + ", tresh_high: " + to_string(tresh_high) +
+									 ", ctrl_min: " + to_string(ctrl_min) + ", ctrl_max: " + to_string(ctrl_max);
 					Server_new->log_journal(journal);
 
 
@@ -200,9 +201,9 @@ void parser()
 					double set_point = atof(child8->Attribute("set_point"));
 					double gain = atof(child8->Attribute("gain"));
 					double val_sat = atof(child8->Attribute("val_sat"));
-					P* P_new = new P(P_ID, P_name, Server_new, State_new,
+					/*P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
-					Control_new = P_new;
+					Control_new = P_new;*/
 					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
 									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
 									 ", val_sat: " + string(val_sat);
@@ -217,23 +218,20 @@ void parser()
 				// élément autre que zone
 
 				// population de la liste de processus dans le bon ordre
-				Simulator_new->set_process_list(Phenomenon_new);
+				Sim->set_process_list(Phenomenon_new);
 				Process* State_n = State_new;
-				Simulator_new->set_process_list(State_n);
-				Simulator_new->set_process_list(Control_new);
+				Sim->set_process_list(State_n);
+				Sim->set_process_list(Control_new);
 				zone_count++;
 			}
 		}
 		Server_new->gnu_header(zone_count);
 		Process* Serv = Server_new;
-		Simulator_new->set_process_list(Serv);
+		Sim->set_process_list(Serv);
 
 		journal = "[i] ---- Parser complete, now running simulator... ----";
 		Server_new->log_journal(journal);
 		cout << journal << endl;
-
-		Simulator_new->run();
-		//return Simulator_new;
 }
 
 
