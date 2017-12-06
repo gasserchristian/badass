@@ -8,7 +8,7 @@
 #include "parser.h"
 #include <limits>
 
-
+/*
 Simulator* parser()
 {
 	string journal;
@@ -232,6 +232,6 @@ Simulator* parser()
 		cout << journal << endl;
 
 		return Simulator_new;
-}
+}*/
 
 

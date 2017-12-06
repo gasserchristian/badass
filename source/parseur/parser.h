@@ -21,7 +21,7 @@
 #include "../processus/controller/TOR.h"
 
 void parser();
-Simulator* parser();
+//Simulator* parser();
 
 #endif /* SOURCE_PARSER_H_ */
 

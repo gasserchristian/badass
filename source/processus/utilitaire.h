@@ -8,7 +8,6 @@
 #ifndef SOURCE_PROCESSUS_UTILITAIRE_H_
 #define SOURCE_PROCESSUS_UTILITAIRE_H_
 
-#include "RAND.h"
 
 
 double box_muller();

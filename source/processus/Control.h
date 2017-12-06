@@ -8,8 +8,6 @@
 #ifndef SOURCES_PROCESSUS_CONTROL_H_
 #define SOURCES_PROCESSUS_CONTROL_H_
 
-#include "State.h"
-#include "Server.h"
 #include "Process.h"
 
 class Control: public Process {
