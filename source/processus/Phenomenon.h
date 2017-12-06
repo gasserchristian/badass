@@ -11,20 +11,20 @@
 #include <cstdlib>
 #include <string>
 #include "Process.h"
+#include "utilitaire.h"
 
 class Phenomenon: public Process {
 public:
-	Phenomenon() {}
+	Phenomenon() : state_(NULL) {}
 	Phenomenon(unsigned ID, string name, Process* state);
 	virtual ~Phenomenon();
 
 	// autres
 
 	virtual void update(unsigned tic) = 0;
-	virtual double workValphen(double val = 0, bool set = false) { return NULL; }
-	virtual double etatCurr(double val = 0, bool set = false) { return NULL; }
+	virtual double workValphen(double val = 0, bool set = false) { return 0.0; }
+	virtual double etatCurr(double val = 0, bool set = false) { return 0.0; }
 protected:
-	string name_;
 	Process* state_;
 };
 
