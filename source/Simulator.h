@@ -16,6 +16,8 @@
 
 using namespace std;
 
+const int checkpoints = 5;
+
 class Simulator {
 public:
 	Simulator(int nTicks);
