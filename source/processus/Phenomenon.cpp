@@ -8,7 +8,7 @@
 #include "Phenomenon.h"
 
 Phenomenon::Phenomenon(unsigned ID, string name, Process* state)
-	: state_(state), Process(ID, name) {
+	: Process(ID, name), state_(state)  {
 }
 
 Phenomenon::~Phenomenon() {

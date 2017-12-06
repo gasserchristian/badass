@@ -29,10 +29,10 @@ public:
 	virtual double etatCurr(double val = 0, bool set = false)
 		{if(set){State_curr_ = val;} return State_curr_; }
 private:
-	double State_curr_;
 	double I_phen_;
 	double I_ctrl_;
 	double val_phen_;
+	double State_curr_;
 	double val_ctrl_;
 };
 
