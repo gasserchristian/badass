@@ -25,7 +25,7 @@ public:
 	virtual double workValphen(double val = 0, bool set = false) = 0;
 	virtual double etatCurr(double val = 0, bool set = false) = 0;
 
-
+	/*
 	//create and open files
 	virtual void create_files() {};
 
@@ -39,6 +39,8 @@ public:
 
 	//close all files
 	virtual void close_files() {};
+	*/
+
 
 protected:
 	unsigned ID_;
