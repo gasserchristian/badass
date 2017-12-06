@@ -16,7 +16,7 @@ RAND::~RAND() {
 
 }
 
-void RAND::update(double tic) {
+void RAND::update(unsigned tic) {
 	double random = static_cast<double>(rand())*(val_max_-val_min_)/RAND_MAX;
 	state_->workValphen(random, true);
 }

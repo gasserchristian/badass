@@ -17,7 +17,7 @@ public:
 	TOR(int ID, string name, Process* server, Process* state,
 			double tresh_low, double tresh_high, double ctrl_min, double ctrl_max);
 	virtual ~TOR();
-	void update(double tic);
+	void update(unsigned tic);
 
 
 	virtual double workValphen(double val = 0, bool set = false)
