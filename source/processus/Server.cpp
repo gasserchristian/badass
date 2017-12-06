@@ -6,10 +6,31 @@
  */
 
 #include "Server.h"
+#include <iomanip>
 
-Server::Server(string tick_unit): tick_unit_(tick_unit) {}
+Server::Server(double nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tick_unit), temp_data_() {}
 
 Server::~Server() {}
+
+void Server::update() {
+	static int iTick = 0;
+	iTick++;
+
+	//Write in GNU
+	gnu_ << setprecision(3) << setw(15) << iTick;
+	for(unsigned int i=0; i< temp_data_.size(); i++) {
+		gnu_ << setprecision(3) << setw(15) << temp_data_[i]; //voir exo balle rebondissante pour alignement
+	}
+	gnu_ << endl;
+
+	if(iTick == nTicks_) {
+		//Fermeture des fichiers:
+		Server::log_journal("----- Simulation completed");
+		cout << "Simulation completed" << endl;
+		Server::close_files();
+	}
+}
+
 
 //Create and open files
 void Server::create_files() {
@@ -18,7 +39,7 @@ void Server::create_files() {
 }
 
 //JOURNAL
-void Server::log_file(string text) {
+void Server::log_journal(string text) {
 	journal_ << text << endl;
 }
 
@@ -29,14 +50,6 @@ void Server::gnu_header(int zone_count) {
 		gnu_ << "    val_phen" << i+1 << "    state_curr"
 			 << i+1 << "   val_control" << i+1;
 	}
-	gnu_ << endl;
-}
-
-void Server::log_file(double value) {
-	gnu_ << value << "    ";
-}
-
-void Server::gnu_endl() {
 	gnu_ << endl;
 }
 

@@ -18,14 +18,10 @@
 #include "../Simulator.h"
 #include <vector>
 #include <string>
-
 #include "../processus/controller/TOR.h"
 
-using namespace std;
-
 void parser();
-
-
+Simulator* parser();
 
 #endif /* SOURCE_PARSER_H_ */
 

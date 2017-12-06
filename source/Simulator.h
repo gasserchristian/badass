@@ -18,10 +18,12 @@ using namespace std;
 
 class Simulator {
 public:
-	Simulator(vector<Process*> Process_list, int nTicks);
+	Simulator(int nTicks);
 	virtual ~Simulator();
 
 	void run();
+
+	void set_process_list(Process* process_new) {Process_list_.push_back(process_new);}
 
 	//string get_tick_unit() {return tick_unit_;}
 

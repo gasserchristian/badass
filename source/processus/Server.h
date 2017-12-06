@@ -13,35 +13,36 @@
 #include <fstream>
 #include <vector>
 #include <string>
-using namespace std;
 
 class Server : public Process {
 public:
-	Server(string tick_unit);
+	Server(double nTicks, std::string tick_unit);
 	virtual ~Server();
 
-	virtual void update() {};
-	virtual double workValphen(double val = 0, bool set = false) { return NULL; }
-	virtual double etatCurr(double val = 0, bool set = false) { return NULL; }
+	void update();
+	double workValphen(double val = 0, bool set = false) { return NULL; }
+	double etatCurr(double val = 0, bool set = false) { return NULL; }
 
 	//create and open files
 	void create_files();
 
 	//Journal
-	void log_file(string text);
+	void log_journal(std::string text);
 
 	//GNU
 	void gnu_header(int zone_count);
-	void log_file(double value);
+	void log_value(double value) {temp_data_.push_back(value);}
 	void gnu_endl();
 
 	//close all files
 	void close_files();
 
 private:
-	ofstream journal_;
-	ofstream gnu_;
-	string tick_unit_;
+	std::ofstream journal_;
+	std::ofstream gnu_;
+	double nTicks_;
+	std::string tick_unit_;
+	vector<double>temp_data_; //data per tick to store in GNU
 };
 
 
