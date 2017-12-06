@@ -13,7 +13,7 @@ SIN::SIN(unsigned ID, std::string sin_name, Process* state, double sigma, double
 
 }
 
-void SIN::update(double tic) {
+void SIN::update(unsigned tic) {
 	double valeur;
 	state_->workValphen(valeur, true);
 }

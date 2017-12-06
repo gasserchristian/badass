@@ -12,7 +12,7 @@ Server::Server(double nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tic
 
 Server::~Server() {}
 
-void Server::update(double tic) {
+void Server::update(unsigned tic) {
 
 	//Write in GNU
 	gnu_ << setprecision(3) << setw(15) << tic;

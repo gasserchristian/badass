@@ -20,7 +20,7 @@ public:
 
 	// autres
 
-	virtual void update(double tic) = 0;
+	virtual void update(unsigned tic) = 0;
 	virtual double workValphen(double val = 0, bool set = false) { return NULL; }
 	virtual double etatCurr(double val = 0, bool set = false) { return NULL; }
 protected:

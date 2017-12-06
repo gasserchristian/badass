@@ -15,7 +15,7 @@ class SIN : public Phenomenon {
 public:
 	SIN(unsigned ID, std::string sin_name, Process* state, double sigma, double offset,
 				double ampl, double phase, double sat_max, double sat_min);
-	void update(double tic);
+	void update(unsigned tic);
 	virtual ~SIN();
 private:
 	const double ampl_, phase_, sat_max_, sat_min_, offset_, sigma_;

@@ -15,7 +15,7 @@ class RAND : public Phenomenon {
 public:
 	RAND(int ID, string name, Process* state, double val_min, double val_max);
 	virtual ~RAND();
-	void update(double tic);
+	void update(unsigned tic);
 
 	virtual double workValphen(double val = 0, bool set = false) { return 0.0; }
 	virtual double etatCurr(double val = 0, bool set = false) { return 0.0; }

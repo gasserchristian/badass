@@ -18,7 +18,7 @@ P::~P() {
 }
 
 
-void P::update(double tic) {
+void P::update(unsigned tic) {
 	double etat_curr, valctr;
 	Server* serv = dynamic_cast <Server*> (server_);
 	etat_curr = state_->etatCurr();
