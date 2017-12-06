@@ -8,8 +8,8 @@
 #include "parser.h"
 #include <limits>
 
-/*
-Simulator* parser()
+void parser()
+//Simulator* parser()
 {
 	string journal;
 	vector<Process*> Process_list;
@@ -33,7 +33,7 @@ Simulator* parser()
 
 		//instancie de la classe serveur
 		string tick_unit = child1->Attribute("tick_unit");
-		string nTicks = atof(child1->Attribute("nTicks"));
+		double nTicks = atof(child1->Attribute("nTicks"));
 		Server* Server_new = new Server(nTicks, tick_unit);
 
 		//création du fichier journal et gnu
@@ -47,7 +47,7 @@ Simulator* parser()
 		Server_new->log_journal(journal);
 
 		//instancie le simulateur
-		Simulator* Simulator_new = new Simulator(child1->Attribute("nTicks"));
+		Simulator* Simulator_new = new Simulator(atof(child1->Attribute("nTicks")));
 		journal = string("[i] Server and Simulator created");
 		Server_new->log_journal(journal);
 		cout << journal << endl;
@@ -84,10 +84,10 @@ Simulator* parser()
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-				journal = string("[i] ID : ") + state_ID + ", name: " + state_name +
+				journal = string("[i] ID : " + state_ID + ", name: " + state_name +
 								 ", iphen" + string(iphen) + ", ictrl: " + string(ictrl) +
 								 ", val_phen: " + string(val_phen) + ", state_curr: " +
-								 string(state_curr);
+								 string(state_curr));
 				Server_new->log_journal(journal);
 
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
@@ -232,7 +232,8 @@ Simulator* parser()
 		Server_new->log_journal(journal);
 		cout << journal << endl;
 
-		return Simulator_new;
-}*/
+		Simulator_new->run();
+		//return Simulator_new;
+}
 
 

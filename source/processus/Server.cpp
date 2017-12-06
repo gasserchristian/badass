@@ -13,17 +13,15 @@ Server::Server(double nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tic
 Server::~Server() {}
 
 void Server::update(double tic) {
-	static int iTick = 0;
-	iTick++;
 
 	//Write in GNU
-	gnu_ << setprecision(3) << setw(15) << iTick;
+	gnu_ << setprecision(3) << setw(15) << tic;
 	for(unsigned int i=0; i< temp_data_.size(); i++) {
 		gnu_ << setprecision(3) << setw(15) << temp_data_[i]; //voir exo balle rebondissante pour alignement
 	}
 	gnu_ << endl;
 
-	if(iTick == nTicks_) {
+	if(tic == nTicks_) {
 		//Fermeture des fichiers:
 		string journal = "[i] ---- Simulation completed ----";
 		Server::log_journal(journal);

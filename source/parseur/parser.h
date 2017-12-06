@@ -14,7 +14,6 @@
 #include "../processus/Control.h"
 #include "../processus/Server.h"
 #include "../processus/Process.h"
-#include "../processus/phenomenes/RAND.h"
 #include "../Simulator.h"
 #include <vector>
 #include <string>
@@ -22,6 +21,7 @@
 
 void parser();
 //Simulator* parser();
+
 
 #endif /* SOURCE_PARSER_H_ */
 
