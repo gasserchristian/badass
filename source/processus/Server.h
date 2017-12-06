@@ -19,7 +19,7 @@ public:
 	Server(double nTicks, std::string tick_unit);
 	virtual ~Server();
 
-	void update();
+	void update(double iTick);
 	double workValphen(double val = 0, bool set = false) { return NULL; }
 	double etatCurr(double val = 0, bool set = false) { return NULL; }
 
