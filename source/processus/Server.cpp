@@ -23,9 +23,7 @@ void Server::update(int tic) {
 
 	if(tic == nTicks_) {
 		//Fermeture des fichiers:
-		string journal = "[i] ---- Simulation completed ----";
-		Server::log_journal(journal);
-		cout << journal << endl;
+		cout << "[i] ---- Simulation completed ----" << endl;
 		Server::close_files();
 	}
 }

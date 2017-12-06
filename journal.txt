@@ -1,19 +1,17 @@
-[i] ---- Parsing the following values: ----
-[i] Ticks number : 192
-[i] Simulation duration : 19215min
-[i] Server created
+Ticks number : 192
+Tick unit : 15min
+Server created
 [i] New zone : zone_1
-[i] Zone ID : 1
-[i] New state : room_temp
-[i] New phenomenon : temperature
-[i] Phenomenon type : sinus
-[i] New control : ctrl_temp
-[i] Control type : TOR
+Zone ID : 1
+New state : room_temp
+New phenomenon : temperature
+Phenomenon type : sinus
+New control : ctrl_temp
+Control type : TOR
 [i] New zone : zone_2
-[i] Zone ID : 2
-[i] New state : aquarium_pH
-[i] New phenomenon : pH
-[i] Phenomenon type : pulse
-[i] New control : pH_ctrl
-[i] Control type : proportionnal
-[i] ---- Parser complete, now running simulator... ----
+Zone ID : 2
+New state : aquarium_pH
+New phenomenon : pH
+Phenomenon type : pulse
+New control : pH_ctrl
+Control type : proportionnal
