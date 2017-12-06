@@ -1,0 +1,17 @@
+Ticks number : 192
+Tick unit : 15min
+Server created
+[i] New zone : zone_1
+Zone ID : 1
+New state : room_temp
+New phenomenon : temperature
+Phenomenon type : sinus
+New control : ctrl_temp
+Control type : TOR
+[i] New zone : zone_2
+Zone ID : 2
+New state : aquarium_pH
+New phenomenon : pH
+Phenomenon type : pulse
+New control : pH_ctrl
+Control type : proportionnal

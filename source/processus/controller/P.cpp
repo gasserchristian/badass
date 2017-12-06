@@ -1,0 +1,39 @@
+/*
+ * P.cpp
+ *
+ *  Created on: Nov 14, 2017
+ *      Author: pcoo_local
+ */
+
+#include "P.h"
+
+void P::update(int tic) {
+	double etat_curr, valctr;
+	Server* serv = dynamic_cast <Server*> (server_);
+	etat_curr = state_->etatCurr();
+	State* etat = dynamic_cast <State*> ( state_ );
+	valctr = gain_ * (set_point_ - etat_curr);
+
+	if(valctr > sat_) {
+		valctr = sat_;
+		serv->log_journal(string("State ")
+				+ to_string(ID_)
+				+ " (\"" + string(name_) + "\"). Relative error command/state "
+				+ to_string((etat_curr - consigne_)/consigne_*100)
+				+ "%. Saturation (+ saturation) of control reached.........");
+	}
+	else if(valctr < -sat_) {
+		valctr = - sat_;
+		serv->log_journal(string("State ")
+				+ to_string(ID_)
+				+ " (\"" + string(name_) + "\"). Relative error command/state "
+				+ to_string((etat_curr - consigne_)/consigne_*100)
+				+ "%. Saturation () of control reached.........");
+	}
+
+	etat->set_valCtrl(valctr);
+
+	serv->log_value(etat->workValphen(0,false));
+	serv->log_value(etat_curr);
+	serv->log_value(valctr);
+}
