@@ -24,15 +24,15 @@ public:
 
 	void run();
 
-	void set_nTicks(unsigned nTicks) {nTicks_ = nTicks;}
+	void set_nTicks(int nTicks) {nTicks_ = nTicks;}
 
 	void set_process_list(Process* process_new) {Process_list_.push_back(process_new);}
 
 	//string get_tick_unit() {return tick_unit_;}
 
 private:
+	int nTicks_;
 	vector<Process*> Process_list_;
-	unsigned nTicks_;
 };
 
 #endif /* SOURCES_SIMULATOR_H_ */

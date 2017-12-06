@@ -1,22 +1,19 @@
-Nombre de Ticks : 192
-Durée de la simulation : 19215min
-Nom de la zone : zone_1
-ID unique de la zone : 1
-Nom de l'état : room_temp
-Valeur iphen : 0.1
-Valeur ictrl : 0.05
-Nom du phénomène : temperature
-type du phénomène : sinus
-Nom du controle : ctrl_temp
-Type du controle : TOR
-Nom de la zone : zone_2
-ID unique de la zone : 2
-Nom de l'état : aquarium_pH
-Valeur iphen : 0.1
-Valeur ictrl : 0.05
-Nom du phénomène : pH
-type du phénomène : pulse
-Nom du controle : pH_ctrl
-Type du controle : proportionnal
-Ce n'est pas une zone, il s'agit de la balise : zone
-Parser complete, now running simulator...
+[i] ---- Parsing the following values: ----
+[i] Ticks number : 192
+[i] Simulation duration : 19215min
+[i] Server created
+[i] New zone : zone_1
+[i] Zone ID : 1
+[i] New state : room_temp
+[i] New phenomenon : temperature
+[i] Phenomenon type : sinus
+[i] New control : ctrl_temp
+[i] Control type : TOR
+[i] New zone : zone_2
+[i] Zone ID : 2
+[i] New state : aquarium_pH
+[i] New phenomenon : pH
+[i] Phenomenon type : pulse
+[i] New control : pH_ctrl
+[i] Control type : proportionnal
+[i] ---- Parser complete, now running simulator... ----
