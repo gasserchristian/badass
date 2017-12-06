@@ -15,7 +15,7 @@ TOR::TOR(int ID, string name, Process* server, Process* state,
 }
 
 TOR::~TOR() {
-	// TODO Auto-generated destructor stub
+	// TODO Auto-generated destrucTOR stub
 }
 
 void TOR::update() {
