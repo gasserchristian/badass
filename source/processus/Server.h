@@ -8,7 +8,6 @@
 #ifndef SOURCE_SERVER_H_
 #define SOURCE_SERVER_H_
 #include "Process.h"
-#include "../Simulator.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -16,7 +15,7 @@
 
 class Server : public Process {
 public:
-	Server(double nTicks, std::string tick_unit);
+	Server(int nTicks, std::string tick_unit);
 	virtual ~Server();
 	void update(int tic);
 
@@ -37,7 +36,7 @@ public:
 private:
 	std::ofstream journal_;
 	std::ofstream gnu_;
-	double nTicks_;
+	int nTicks_;
 	std::string tick_unit_;
 	vector<double>temp_data_; //data per tick to store in GNU
 };

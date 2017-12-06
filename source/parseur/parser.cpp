@@ -9,7 +9,7 @@
 #include <limits>
 
 void parse(Simulator* Sim)
-{/*
+{
 	string journal;
 	vector<Process*> Process_list;
 	//vecteur contenant les pointeurs vers toutes les instances des classes filles de process
@@ -83,11 +83,12 @@ void parse(Simulator* Sim)
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-				journal = string("[i] ID : " + state_ID + ", name: " + state_name +
+				/*journal = string("[i] ID : " + state_ID + ", name: " + state_name +
 								 ", iphen" + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
 								 ", val_phen: " + to_string(val_phen) + ", state_curr: " +
 								 to_string(state_curr));
 				Server_new->log_journal(journal);
+				*/
 
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
 				TiXmlElement* child3 = child2->FirstChild("phenomenon")->ToElement () ;
@@ -108,25 +109,29 @@ void parse(Simulator* Sim)
 					string sin_name = child3->Attribute( "name");
 					double sin_std_dev = atof(child4->Attribute("std_dev"));
 					double sin_ampl = atof(child4->Attribute("ampl"));
-					double sin_period = atof(child4->Attribute("period"));
+					double sin_period = atoi(child4->Attribute("period"));
 					double sin_offs=0, sin_phase=0,
 							sin_sat_max= std::numeric_limits<double>::infinity(),
 							sin_sat_min=-sin_sat_max;
 					if(child4->Attribute("offs")) sin_offs = atof(child4->Attribute("offs"));
-					if(child4->Attribute("phase")) sin_phase = atof(child4->Attribute("phase"));
+					if(child4->Attribute("phase")) sin_phase = atoi(child4->Attribute("phase"));
 					if(child4->Attribute("sat_max")) sin_sat_max = atof(child4->Attribute("sat_max"));
 					if(child4->Attribute("sat_min")) sin_sat_min = atof(child4->Attribute("sat_min"));
-					/*SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
+					SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
 											sin_std_dev, sin_offs, sin_ampl, sin_period,
 											sin_phase, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
-					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name +
-									 ", std_dev: " + to_string(sin_std_dev) +
-									 ", offset: " + to_string(sin_offs) + ", amplitude: " + to_string(sin_ampl) +
+
+
+					/*
+					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name + ", std_dev: " + to_string(sin_std_dev);
+										", offset: ") + to_string(sin_offs);
+										+ ", amplitude: " + to_string(sin_ampl) +
 									 ", phase: " + to_string(sin_phase) + ", period: " + to_string(sin_period) +
 									 ", sat_max: " + to_string(sin_sat_max) +
 									 ", sat_min: " + to_string(sin_sat_min);
 					Server_new->log_journal(journal);
+					*/
 
 				}
 				if (strcmp(child3->Attribute("type"),"pulse")==0){
@@ -139,16 +144,18 @@ void parse(Simulator* Sim)
 					double pul_std_dev = atof(child4->Attribute("std_dev"));
 					double pul_v_low = atof(child4->Attribute("v_low"));
 					double pul_v_high = atof(child4->Attribute("v_high"));
-					double pul_t_del = atof(child4->Attribute("v_t_del"));
-					double pul_t_rise = atof(child4->Attribute("v_t_rise"));
-					double pul_pwidth = atof(child4->Attribute("v_pwidth"));
-					double pul_t_fall = atof(child4->Attribute("v_t_fall"));
-					double pul_period = atof(child4->Attribute("v_period"));
-					/*PUL* pul_new = new PUL(pul_ID, pul_name, State_new,
+					double pul_t_del = atoi(child4->Attribute("v_t_del"));
+					double pul_t_rise = atoi(child4->Attribute("v_t_rise"));
+					double pul_pwidth = atoi(child4->Attribute("v_pwidth"));
+					double pul_t_fall = atoi(child4->Attribute("v_t_fall"));
+					double pul_period = atoi(child4->Attribute("v_period"));
+					PUL* pul_new = new PUL(pul_ID, pul_name, State_new,
 											pul_std_dev, pul_v_low, pul_v_high,
 											pul_t_del, pul_t_rise, pul_pwidth,
 											pul_t_fall, pul_period);
 					Phenomenon_new = pul_new;
+
+					/*
 					journal = string("[i] Pulse ID:") + pul_ID + ", name: " + pul_name +
 									 ", std_dev: " + to_string(pul_std_dev) +
 									 ", v_low: " + to_string(pul_v_low) + ", v_high: " + to_string(pul_v_high) +
@@ -156,6 +163,7 @@ void parse(Simulator* Sim)
 									 ", pwidth: " + to_string(pul_pwidth) + ", t_fall: " + to_string(pul_t_fall) +
 									 ", period: " + to_string(pul_period);
 					Server_new->log_journal(journal);
+					*/
 				}
 
 
@@ -183,10 +191,12 @@ void parse(Simulator* Sim)
 					TOR* TOR_new = new TOR(TOR_ID, TOR_name, Server_new, State_new,
 											tresh_low, tresh_high, ctrl_min, ctrl_max);
 					Control_new = TOR_new;
+					/*
 					journal = string("[i] TOR ID:") + TOR_ID + ", name: " + TOR_name +
 									 ", tresh_low: " + to_string(tresh_low) + ", tresh_high: " + to_string(tresh_high) +
 									 ", ctrl_min: " + to_string(ctrl_min) + ", ctrl_max: " + to_string(ctrl_max);
 					Server_new->log_journal(journal);
+					*/
 
 
 				}
@@ -201,13 +211,15 @@ void parse(Simulator* Sim)
 					double set_point = atof(child8->Attribute("set_point"));
 					double gain = atof(child8->Attribute("gain"));
 					double val_sat = atof(child8->Attribute("val_sat"));
-					/*P* P_new = new P(P_ID, P_name, Server_new, State_new,
+					P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
 					Control_new = P_new;
+/*
 					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
 									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
 									 ", val_sat: " + string(val_sat);
 					Server_new->log_journal(journal);
+					*/
 				}
 
 				else {
@@ -231,7 +243,7 @@ void parse(Simulator* Sim)
 
 		journal = "[i] ---- Parser complete, now running simulator... ----";
 		Server_new->log_journal(journal);
-		cout << journal << endl;*/
+		cout << journal << endl;
 }
 
 

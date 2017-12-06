@@ -8,7 +8,7 @@
 #include "Server.h"
 #include <iomanip>
 
-Server::Server(double nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tick_unit), temp_data_() {}
+Server::Server(int nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tick_unit), temp_data_() {}
 
 Server::~Server() {}
 
