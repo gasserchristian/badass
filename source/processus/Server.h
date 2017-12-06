@@ -20,8 +20,7 @@ public:
 	virtual ~Server();
 
 	void update(unsigned tic);
-	double workValphen(double val = 0, bool set = false) { return NULL; }
-	double etatCurr(double val = 0, bool set = false) { return NULL; }
+
 
 	//create and open files
 	void create_files();

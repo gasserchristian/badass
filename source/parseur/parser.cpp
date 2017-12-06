@@ -8,7 +8,7 @@
 #include "parser.h"
 #include <limits>
 
-void parser(Simulator* Sim)
+void parse(Simulator* Sim)
 {
 	string journal;
 	vector<Process*> Process_list;
@@ -32,7 +32,7 @@ void parser(Simulator* Sim)
 
 		//instancie de la classe serveur
 		string tick_unit = child1->Attribute("tick_unit");
-		double nTicks = atof(child1->Attribute("nTicks"));
+		int nTicks = atoi(child1->Attribute("nTicks"));
 		Server* Server_new = new Server(nTicks, tick_unit);
 
 		//création du fichier journal et gnu
@@ -46,7 +46,6 @@ void parser(Simulator* Sim)
 		Server_new->log_journal(journal);
 
 		//instancie le simulateur
-		double nTicks = atof(child1->Attribute("nTicks"));
 		Sim->set_nTicks(nTicks);
 		journal = string("[i] Server created");
 		Server_new->log_journal(journal);

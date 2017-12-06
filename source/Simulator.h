@@ -8,7 +8,6 @@
 #ifndef SOURCES_SIMULATOR_H_
 #define SOURCES_SIMULATOR_H_
 
-#include "./parseur/parser.h"
 #include "./processus/Process.h"
 #include "./processus/Server.h"
 #include <string>
@@ -25,7 +24,7 @@ public:
 
 	void run();
 
-	void set_nTicks(double nTicks) {nTicks_ = nTicks;}
+	void set_nTicks(unsigned nTicks) {nTicks_ = nTicks;}
 
 	void set_process_list(Process* process_new) {Process_list_.push_back(process_new);}
 
@@ -33,7 +32,7 @@ public:
 
 private:
 	vector<Process*> Process_list_;
-	int nTicks_;
+	unsigned nTicks_;
 };
 
 #endif /* SOURCES_SIMULATOR_H_ */

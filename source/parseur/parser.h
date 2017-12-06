@@ -8,8 +8,8 @@
 #ifndef SOURCE_PARSER_H_
 #define SOURCE_PARSER_H_
 
-#include "../../TinyXML/tinyxml.h"
 #include "../Simulator.h"
+#include "../../TinyXML/tinyxml.h"
 #include "../processus/Phenomenon.h"
 #include "../processus/State.h"
 #include "../processus/Control.h"
@@ -22,7 +22,7 @@
 #include <vector>
 #include <string>
 
-void parser(Simulator* Sim);
+void parse(Simulator* Sim);
 
 #endif /* SOURCE_PARSER_H_ */
 
