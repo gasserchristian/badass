@@ -7,14 +7,6 @@
 
 #include "State.h"
 
-State::State(int ID, string name, double i_phen, double i_ctrl,
-			 double val_phen, double state_curr) :
-			 Process(ID, name), I_phen_(i_phen), I_ctrl_(i_ctrl),
-			 val_phen_(val_phen), val_ctrl_(0.0), State_curr_(0.0) {}
-
-State::~State() {}
-
-
 void State::update(int tic) {
 	State_curr_ = State_curr_
 			+ (val_phen_ - State_curr_) * I_phen_

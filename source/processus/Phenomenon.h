@@ -17,7 +17,7 @@ class Phenomenon: public Process {
 public:
 	Phenomenon() : state_(NULL) {}
 	Phenomenon(unsigned ID, string name, Process* state);
-	virtual ~Phenomenon();
+	virtual ~Phenomenon() {}
 
 	// autres
 

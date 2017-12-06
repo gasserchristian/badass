@@ -7,9 +7,3 @@
 
 #include "Process.h"
 
-Process::Process(unsigned ID, string name) : ID_(ID), name_(name) {
-}
-
-Process::~Process() {
-}
-

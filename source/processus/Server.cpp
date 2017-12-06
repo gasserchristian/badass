@@ -13,7 +13,7 @@ Server::Server(int nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tick_u
 Server::~Server() {}
 
 void Server::update(int tic) {
-
+/*
 	//Write in GNU
 	gnu_ << setprecision(3) << setw(15) << tic;
 	for(unsigned int i=0; i< temp_data_.size(); i++) {
@@ -25,7 +25,7 @@ void Server::update(int tic) {
 		//Fermeture des fichiers:
 		cout << "[i] ---- Simulation completed ----" << endl;
 		Server::close_files();
-	}
+	}*/
 }
 
 

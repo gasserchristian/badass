@@ -119,6 +119,8 @@ void parse(Simulator* Sim)
 											sin_std_dev, sin_offs, sin_ampl, sin_period,
 											sin_phase, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
+
+
 					/*
 					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name + ", std_dev: " + to_string(sin_std_dev);
 										", offset: ") + to_string(sin_offs);
@@ -210,7 +212,7 @@ void parse(Simulator* Sim)
 					P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
 					Control_new = P_new;
-					/*
+/*
 					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
 									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
 									 ", val_sat: " + string(val_sat);
