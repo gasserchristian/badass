@@ -9,11 +9,8 @@
 #include <iostream> //DELETE AFTER
 
 void PUL::update(int tic) {
-	cout << "check" << endl;
 	long int val = (tic - t_del_)%period_;
-	cout << "check" << endl;
 	double phen_val = v_low_;
-	cout << "check" << endl;
 	if(val < t_rise_) {
 		phen_val = val/t_rise_*v_high_;
 	}

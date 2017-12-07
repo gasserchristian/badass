@@ -20,8 +20,9 @@ void Simulator::run() {
 			cout << "check" << endl;
 			Process_list_[i]->update(iTick);
 			}
+		/*
 		if((iTick*checkpoints)%nTicks_==0) {
 			cout << "[i] Simulation status: " << iTick << "% completed" << endl;
-		}
+		}*/
 	}
 }

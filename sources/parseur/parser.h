@@ -9,7 +9,6 @@
 #define SOURCE_PARSER_H_
 
 #include "../Simulator.h"
-#include "../../TinyXML/tinyxml.h"
 #include "../processus/Phenomenon.h"
 #include "../processus/State.h"
 #include "../processus/Control.h"
@@ -21,6 +20,7 @@
 #include "../processus/phenomenes/SIN.h"
 #include <vector>
 #include <string>
+#include "../../TinyXML/tinyxml.h"
 
 void parse(Simulator* Sim);
 

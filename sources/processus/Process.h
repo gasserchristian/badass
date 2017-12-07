@@ -25,23 +25,6 @@ public:
 	virtual double workValphen(double val = 0, bool set = false) {return 0.0;}
 	virtual double etatCurr(double val = 0, bool set = false) {return 0.0;}
 
-	/*
-	//create and open files
-	virtual void create_files() {};
-
-	//Journal
-	virtual void log_file(std::string text) {};
-
-	//GNU
-	virtual void gnu_header(int zone_count) {};
-	virtual void log_file(double value) {};
-	virtual void gnu_endl() {};
-
-	//close all files
-	virtual void close_files() {};
-	*/
-
-
 protected:
 	unsigned ID_;
 	string name_;
