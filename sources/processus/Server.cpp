@@ -13,7 +13,6 @@ Server::Server(int nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tick_u
 Server::~Server() {}
 
 void Server::update(int tic) {
-/*
 	//Write in GNU
 	gnu_ << setprecision(3) << setw(15) << tic;
 	for(unsigned int i=0; i< temp_data_.size(); i++) {
@@ -21,21 +20,11 @@ void Server::update(int tic) {
 	}
 	gnu_ << endl;
 
-	if(tic == nTicks_) {
+	if(tic == nTicks_-1) { //MAGIQUE NUMBER?
 		//Fermeture des fichiers:
-<<<<<<< HEAD
-<<<<<<< HEAD
-		string journal = "[i] ---- Simulation completed ----";
-		Server::log_journal(journal);
-		cout << journal << endl;
-=======
 		cout << "[i] ---- Simulation completed ----" << endl;
->>>>>>> e76a824edcc34f60e078cd3444d51c138fb03ebc
-=======
-		cout << "[i] ---- Simulation completed ----" << endl;
->>>>>>> e76a824edcc34f60e078cd3444d51c138fb03ebc
 		Server::close_files();
-	}*/
+	}
 }
 
 

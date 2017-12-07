@@ -18,11 +18,9 @@ TOR::~TOR() {
 }
 
 void TOR::update(int tic) {
-	cout << "ctrl1" << endl;
 	double etat_curr, valctr;
 	etat_curr = state_->etatCurr();
 	if(etat_curr > tresh_high_) {
-		cout << "ctrl2" << endl;
 		valctr = ctrl_min_;
 		server_->log_journal(string("State ")
 				+ to_string(ID_)
@@ -31,7 +29,6 @@ void TOR::update(int tic) {
 				+ "%. Control activated, tresh_high.........");
 	}
 	else if(etat_curr < tresh_low_) {
-		cout << "ctrl3" << endl;
 		valctr = ctrl_max_;
 		/*
 		server_->log_journal(string("State ")
@@ -40,10 +37,8 @@ void TOR::update(int tic) {
 				+ to_string((etat_curr - consigne_)/consigne_*100)
 				+ "%. Control activated, tresh_down.........");
 		*/
-		cout << "ctrl3" << endl;
 	}
 	else {
-		cout << "ctrl4" << endl;
 		valctr = 0;
 	}
 
