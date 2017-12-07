@@ -8,13 +8,11 @@
 #ifndef SOURCES_PROCESSUS_CONTROLLER_TOR_H_
 #define SOURCES_PROCESSUS_CONTROLLER_TOR_H_
 
-#include "../State.h"
-#include "../Server.h"
 #include "../Control.h"
 
 class TOR : public Control {
 public:
-	TOR(int ID, string name, Process* server, Process* state,
+	TOR(int ID, string name, Server* server, State* state,
 			double tresh_low, double tresh_high, double ctrl_min, double ctrl_max);
 	virtual ~TOR();
 	void update(int tic);

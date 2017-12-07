@@ -9,8 +9,6 @@
 #ifndef SOURCES_PROCESSUS_CONTROLLER_P_H_
 #define SOURCES_PROCESSUS_CONTROLLER_P_H_
 
-#include "../State.h"
-#include "../Server.h"
 #include "../Control.h"
 
 class P : public Control {
