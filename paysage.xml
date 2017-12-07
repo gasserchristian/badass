@@ -3,7 +3,7 @@
    <!-- première zone -->
    <zone name="zone_1" ID="1">
        <phenomenon name="temperature" type="sinus">
-            <param std_dev="2" offs="12" ampl="7" phase="1" period="1440"/> 
+            <param std_dev="2" offs="12" ampl="7" phase="1" period="96"/> 
             <!-- on pourrait rajouter sat_min et sat_max au besoin -->)
 	         <!-- le choix des paramètres est spécifique au type. donc pas d'ambiguité. -->
 	    </phenomenon>

@@ -212,7 +212,7 @@ void parse(Simulator* Sim)
 					P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
 					Control_new = P_new;
-/*
+					/*
 					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
 									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
 									 ", val_sat: " + string(val_sat);

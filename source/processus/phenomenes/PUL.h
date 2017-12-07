@@ -10,6 +10,7 @@
 
 #include "../Phenomenon.h"
 #include <cassert>
+#include <iostream> //DELETE AFTER
 
 class PUL : public Phenomenon {
 public:
