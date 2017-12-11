@@ -6,7 +6,7 @@
  */
 
 #include "TOR.h"
-#include <iostream> //DELETE AFTER
+#include <cassert>
 
 void TOR::update(int tic) {
 	double etat_curr, valctr;

@@ -21,7 +21,7 @@ void Server::update(int tic) {
 	gnu_ << endl;
 	temp_data_.clear();
 
-	if(tic == nTicks_-1) { //MAGIQUE NUMBER?
+	if(tic == nTicks_-1) {
 		//Fermeture des fichiers:
 		cout << "[i] ---- Simulation completed ----" << endl;
 		Server::close_files();
