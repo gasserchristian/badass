@@ -35,7 +35,7 @@ void TOR::update(int tic) {
 
 	state_->set_valCtrl(valctr);
 
-	server_->log_value(state_->get_StateCurr());
+	server_->log_value(state_->get_valPhen());
 	server_->log_value(etat_curr);
 	server_->log_value(valctr);
 }
