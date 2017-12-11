@@ -7,6 +7,7 @@
 
 #include "Server.h"
 #include <iomanip>
+#include "time.h"
 
 Server::Server(int nTicks, string tick_unit): nTicks_(nTicks), tick_unit_(tick_unit), temp_data_() {}
 
@@ -31,8 +32,16 @@ void Server::update(int tic) {
 
 //Create and open files
 void Server::create_files() {
+	time_t rawtime;
+	struct tm * timeinfo;
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+	string journal = string("Creation time and date: ") + asctime(timeinfo);
 	journal_.open("journal.txt");
 	gnu_.open("gnu.txt");
+	Server::log_journal(journal);
+	journal = "Files created: journal.txt & gnu.txt";
+	Server::log_journal(journal);
 }
 
 //JOURNAL

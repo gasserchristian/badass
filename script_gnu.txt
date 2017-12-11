@@ -10,8 +10,8 @@ unset label                            # remove any previous labels
 set xtic auto                          # set xtics automatically
 set ytic auto                          # set ytics automatically
 set title "Room temperature"
-set xlabel "Tic"
-set ylabel "Temperature"
+set xlabel "Tic [15min]"
+set ylabel "Temperature [°C]"
 plot    "gnu.txt" using 1:2 title 'val phen' with linespoints , \
         "gnu.txt" using 1:3 title 'state curr' with linespoints , \
 	"gnu.txt" using 1:4 title 'val control' with linespoints
@@ -24,7 +24,7 @@ unset label                            # remove any previous labels
 set xtic auto                          # set xtics automatically
 set ytic auto                          # set ytics automatically
 set title "Aquarium"
-set xlabel "Tic"
+set xlabel "Tic [15min]"
 set ylabel "pH"
 plot    "gnu.txt" using 1:5 title 'val phen' with linespoints , \
         "gnu.txt" using 1:6 title 'state curr' with linespoints , \

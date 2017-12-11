@@ -17,15 +17,10 @@
 	                t_fall="15" period ="100"/>
         </phenomenon>
 	<state name="aquarium_pH" >
-		<param iphen="0.1" ictrl="1" val_phen = "6.5" state_curr = "0" />
+		<param iphen="0.1" ictrl="1" val_phen = "6.5" state_curr = "7" />
 	</state>
-<<<<<<< HEAD
-	<control name="pH_ctrl" type="P">
-           <param set_point = "3" gain = "0.4" val_sat = "1000"/>
-=======
 	<control name="pH_ctrl" type="P" >
            <param set_point = "7" gain = "0.5" val_sat = "140"/>
->>>>>>> 6b432615949cd87e80f72fa553f65c5085e37c3f
 	</control>
     </zone>
 </landscape>

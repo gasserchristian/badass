@@ -38,14 +38,14 @@ void parse(Simulator* Sim)
 		//création du fichier journal et gnu
 		Server_new->create_files();
 		cout << "[i] ---- Parsing the following instances: ----" << endl;
-		journal = string("Ticks number : ") + child1->Attribute("nTicks");
+		journal = string("Ticks number: ") + child1->Attribute("nTicks");
 		Server_new->log_journal(journal);
-		journal = string("Tick unit : ") + child1->Attribute("tick_unit");
+		journal = string("Tick unit: ") + child1->Attribute("tick_unit");
 		Server_new->log_journal(journal);
 
 		//instancie le simulateur
 		Sim->set_nTicks(nTicks);
-		journal = string("Server created");
+		journal = string("[i] New server");
 		Server_new->log_journal(journal);
 		cout << journal << endl;
 
@@ -58,7 +58,7 @@ void parse(Simulator* Sim)
 		{ //BOUCLE pour extraire l'ensemble des triplets "zone" du paysage
 			// Détection d'un élément zone NIVEAU 2
 			if (strcmp(child2->Value(),"zone")==0){
-				journal = string("[i] New zone : ") + child2->Attribute("name");
+				journal = string("[i] New zone: ") + child2->Attribute("name");
 				Server_new->log_journal(journal);
 				cout << journal << endl;
 				// EXTRACTION attribut nom de la zone: NIVEAU 3
@@ -67,7 +67,7 @@ void parse(Simulator* Sim)
 				// ---------EXTRACTION attribut ID de la zone: NIVEAU 3 ------------
 				// ------------- EXTRACTION DE l'ETAT DE LA ZONE: NIVEAU 2
 				TiXmlElement* child5 = child2->FirstChild("state")->ToElement();
-				journal = string("New state : ") + child5->Attribute( "name");
+				journal = string("New state: ") + child5->Attribute( "name");
 				Server_new->log_journal(journal);
 				cout << journal << endl;
 
@@ -81,8 +81,8 @@ void parse(Simulator* Sim)
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-				journal = string("State ID : ") + child2->Attribute( "ID") + ", name: " + state_name +
-								 ", iphen: " + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
+				journal = string("State ID: ") + child2->Attribute( "ID") + ", name: " + state_name +
+								 ", iphen: " + child6->Attribute("iphen") + ", ictrl: " + child6->Attribute("ictrl") +
 								 ", val_phen: " + to_string(val_phen) + ", state_curr: " +
 								 to_string(state_curr);
 				Server_new->log_journal(journal);
@@ -119,10 +119,10 @@ void parse(Simulator* Sim)
 											sin_std_dev, sin_offs, sin_ampl, sin_phase,
 											sin_period, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
-					journal = string("Sinus ID:") + to_string(sin_ID) + ", name: "
-									 + sin_name + ", std_dev: " + to_string(sin_std_dev) +
+					journal = string("Sinus ID: ") + to_string(sin_ID) + ", name: "
+									 + sin_name + ", std_dev: " + child4->Attribute("std_dev") +
 									 ", offset: " + to_string(sin_offs) + ", amplitude: " +
-									  to_string(sin_ampl) + ", phase: " + to_string(sin_phase)
+									 child4->Attribute("ampl") + ", phase: " + to_string(sin_phase)
 									  + ", period: " + to_string(sin_period) +
 									 ", sat_max: " + to_string(sin_sat_max) +
 									 ", sat_min: " + to_string(sin_sat_min);
@@ -149,10 +149,10 @@ void parse(Simulator* Sim)
 											pul_t_del, pul_t_rise, pul_pwidth,
 											pul_t_fall, pul_period);
 					Phenomenon_new = pul_new;
-					journal = string("Pulse ID:") + to_string(pul_ID) + ", name: " + pul_name +
-									 ", std_dev: " + to_string(pul_std_dev) +
-									 ", v_low: " + to_string(pul_v_low) + ", v_high: " +
-									 to_string(pul_v_high) + ", t_del: " + to_string(pul_t_del)
+					journal = string("Pulse ID: ") + to_string(pul_ID) + ", name: " + pul_name +
+									 ", std_dev: " + child4->Attribute("std_dev") +
+									 ", v_low: " + child4->Attribute("v_low") + ", v_high: " +
+									 child4->Attribute("v_high") + ", t_del: " + to_string(pul_t_del)
 									 + ", t_rise: " + to_string(pul_t_rise) + ", pwidth: "
 									 + to_string(pul_pwidth) + ", t_fall: " +
 									 to_string(pul_t_fall) + ", period: " + to_string(pul_period);
@@ -191,9 +191,9 @@ void parse(Simulator* Sim)
 											tresh_low, tresh_high, ctrl_min, ctrl_max);
 					Control_new = TOR_new;
 					journal = string("TOR ID:") + to_string(TOR_ID) + ", name: " + TOR_name +
-									 ", tresh_low: " + to_string(tresh_low) + ", tresh_high: "
-									 + to_string(tresh_high) + ", ctrl_min: " + to_string(ctrl_min)
-									 + ", ctrl_max: " + to_string(ctrl_max);
+									 ", tresh_low: " + child8->Attribute("tresh_low") + ", tresh_high: "
+									 + child8->Attribute("tresh_high") + ", ctrl_min: " + child8->Attribute("ctrl_min")
+									 + ", ctrl_max: " + child8->Attribute("ctrl_max");
 					Server_new->log_journal(journal);
 
 
@@ -213,9 +213,9 @@ void parse(Simulator* Sim)
 											set_point, gain, val_sat);
 					Control_new = P_new;
 					journal = string("Proportionnal ID:") + to_string(P_ID) + ", name: "
-									 + P_name + ", set_point: " + to_string(set_point)
-									 + ", gain: " + to_string(gain) + ", val_sat: " +
-									 to_string(val_sat);
+									 + P_name + ", set_point: " + child8->Attribute("set_point")
+									 + ", gain: " + child8->Attribute("gain") + ", val_sat: " +
+									 child8->Attribute("val_sat");
 					Server_new->log_journal(journal);
 				}
 
@@ -237,8 +237,9 @@ void parse(Simulator* Sim)
 		Server_new->gnu_header(zone_count);
 		Process* Serv = Server_new;
 		Sim->set_process_list(Serv);
-
-		cout << "[i] ---- Parser complete, now running simulator... ----" << endl;
+		journal = "[i] ---- Parser complete, now running simulator... ----";
+		Server_new->log_journal(journal);
+		cout << journal << endl;
 }
 
 
