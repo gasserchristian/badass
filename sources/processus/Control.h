@@ -14,11 +14,11 @@
 class Control : public Process {
 public:
 	//constructor/destructor
-	Control() : Process(0, "no name"), val_sat_(0.0), consigne_(0.0),
+	Control() : Process(0, "no name"),
 		server_(NULL), state_(NULL) {}
-	Control(int ID, string name, double val_sat, double consigne,
+	Control(int ID, string name,
 			Server* server, State* state) :
-				Process(ID, name), val_sat_(val_sat), consigne_(consigne),
+				Process(ID, name),
 				server_(server), state_(state) {}
 	virtual ~Control() {};
 
@@ -26,8 +26,6 @@ public:
 	void update(int tic) = 0;
 
 protected:
-	double val_sat_;
-	double consigne_;
 	Server* server_;
 	State* state_;
 };

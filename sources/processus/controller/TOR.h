@@ -15,7 +15,7 @@ public:
 	//constructor/destructor
 	TOR(int ID, string name, Server* server, State* state,
 		double tresh_low, double tresh_high, double ctrl_min, double ctrl_max) :
-			Control(ID, name, ctrl_max, tresh_high, server, state), tresh_low_(tresh_low), tresh_high_(tresh_high),
+			Control(ID, name, server, state), tresh_low_(tresh_low), tresh_high_(tresh_high),
 			ctrl_min_(ctrl_min), ctrl_max_(ctrl_max) {
 	}
 	virtual ~TOR() {}
