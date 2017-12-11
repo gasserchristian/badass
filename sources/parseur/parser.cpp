@@ -81,7 +81,7 @@ void parse(Simulator* Sim)
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-				journal = "[i] ID : " + child2->Attribute( "ID");
+				/*journal = "[i] ID : " + child2->Attribute("ID");
 
 
 
@@ -92,7 +92,7 @@ void parse(Simulator* Sim)
 								 ", iphen" + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
 								 ", val_phen: " + to_string(val_phen) + ", state_curr: " +
 								 to_string(state_curr));
-				Server_new->log_journal(journal);
+				Server_new->log_journal(journal);*/
 
 				// flow string dans le chapitre 2 (output string stream) concaténer par le même signe << (champs .str)
 
@@ -125,8 +125,8 @@ void parse(Simulator* Sim)
 					if(child4->Attribute("sat_max")) sin_sat_max = atof(child4->Attribute("sat_max"));
 					if(child4->Attribute("sat_min")) sin_sat_min = atof(child4->Attribute("sat_min"));
 					SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
-											sin_std_dev, sin_offs, sin_ampl, sin_period,
-											sin_phase, sin_sat_max, sin_sat_min);
+											sin_std_dev, sin_offs, sin_ampl, sin_phase,
+											sin_period, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
 
 

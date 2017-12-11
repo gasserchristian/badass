@@ -3,7 +3,7 @@
    <!-- première zone -->
    <zone name="zone_1" ID="1">
        <phenomenon name="temperature" type="sinus">
-            <param std_dev="2" offs="12" ampl="7" phase="1" period="96"/> 
+            <param std_dev="1" offs="12" ampl="7" phase="1" period="100"/> 
             <!-- on pourrait rajouter sat_min et sat_max au besoin -->)
 	         <!-- le choix des paramètres est spécifique au type. donc pas d'ambiguité. -->
 	    </phenomenon>
@@ -11,10 +11,11 @@
 	        <param iphen="0.1" ictrl="0.05" val_phen = "10" state_curr = "20" />
 	    </state>
 	    <control name="ctrl_temp" type="TOR">
-	        <param tresh_low = "19" tresh_high = "20"  ctrl_min = "5" ctrl_max = "50"/>
+	        <param tresh_low = "19" tresh_high = "20"  ctrl_min = "5" ctrl_max = "10"/>
 	    </control>
 	</zone>
    <!-- deuxième zone -->
+   <!--
    <zone name="zone_2" ID="2">
         <phenomenon name="pH" type="pulse">
 	         <param std_dev="1" v_low="5" v_high="8" t_del="10" t_rise="10" pwidth="20" 
@@ -27,6 +28,5 @@
            <param set_point = "7" gain = "0.5" val_sat = "140"/>
 	</control>
     </zone>
-	<!--  serveur directement instancié dans le main -->
-	<!-- pas de simulation dans le paysage comme lindique lenonce. -->
+	 -->
 </landscape>
