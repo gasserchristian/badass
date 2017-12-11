@@ -81,16 +81,11 @@ void parse(Simulator* Sim)
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-				/*
-				journal = "[i] ID : " + child2->Attribute( "ID") + ", name: " + state_name +
-								 ", iphen" + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
+				journal = string("State ID : ") + child2->Attribute( "ID") + ", name: " + state_name +
+								 ", iphen: " + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
 								 ", val_phen: " + to_string(val_phen) + ", state_curr: " +
-								 to_string(state_curr));
+								 to_string(state_curr);
 				Server_new->log_journal(journal);
-				*/
-
-				// flow string dans le chapitre 2 (output string stream) concaténer par le même signe << (champs .str) (même des doubles c'est ok)
-
 
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
 				TiXmlElement* child3 = child2->FirstChild("phenomenon")->ToElement () ;
@@ -123,20 +118,17 @@ void parse(Simulator* Sim)
 											sin_std_dev, sin_offs, sin_ampl, sin_period,
 											sin_phase, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
-
-
-					/*
-					journal = string("[i] Sinus ID:") + sin_ID + ", name: " + sin_name + ", std_dev: " + to_string(sin_std_dev);
-										", offset: ") + to_string(sin_offs);
-										+ ", amplitude: " + to_string(sin_ampl) +
-									 ", phase: " + to_string(sin_phase) + ", period: " + to_string(sin_period) +
+					journal = string("Sinus ID:") + to_string(sin_ID) + ", name: "
+									 + sin_name + ", std_dev: " + to_string(sin_std_dev) +
+									 ", offset: " + to_string(sin_offs) + ", amplitude: " +
+									  to_string(sin_ampl) + ", phase: " + to_string(sin_phase)
+									  + ", period: " + to_string(sin_period) +
 									 ", sat_max: " + to_string(sin_sat_max) +
 									 ", sat_min: " + to_string(sin_sat_min);
 					Server_new->log_journal(journal);
-					*/
 
 				}
-				if (strcmp(child3->Attribute("type"),"pulse")==0){
+				else if (strcmp(child3->Attribute("type"),"pulse")==0){
 					// Détection d'un phénomène random
 					TiXmlElement* child4 = child3->FirstChild("param")->ToElement();
 
@@ -156,18 +148,20 @@ void parse(Simulator* Sim)
 											pul_t_del, pul_t_rise, pul_pwidth,
 											pul_t_fall, pul_period);
 					Phenomenon_new = pul_new;
-
-					/*
-					journal = string("[i] Pulse ID:") + pul_ID + ", name: " + pul_name +
+					journal = string("Pulse ID:") + to_string(pul_ID) + ", name: " + pul_name +
 									 ", std_dev: " + to_string(pul_std_dev) +
-									 ", v_low: " + to_string(pul_v_low) + ", v_high: " + to_string(pul_v_high) +
-									 ", t_del: " + to_string(pul_t_del) + ", t_rise: " + to_string(pul_t_rise) +
-									 ", pwidth: " + to_string(pul_pwidth) + ", t_fall: " + to_string(pul_t_fall) +
-									 ", period: " + to_string(pul_period);
+									 ", v_low: " + to_string(pul_v_low) + ", v_high: " +
+									 to_string(pul_v_high) + ", t_del: " + to_string(pul_t_del)
+									 + ", t_rise: " + to_string(pul_t_rise) + ", pwidth: "
+									 + to_string(pul_pwidth) + ", t_fall: " +
+									 to_string(pul_t_fall) + ", period: " + to_string(pul_period);
 					Server_new->log_journal(journal);
-					*/
 				}
-
+				else{
+					cout << "[e] Phenomenon type [" << child3->Attribute("type") <<
+							"] not recognized by the parser.";
+					exit( 1 );
+				}
 
 				// ------- EXTRACTION DU CONTROLE DE LA ZONE: NIVEAU 2
 				TiXmlElement* child7 = child2->FirstChild("control")->ToElement();
@@ -178,6 +172,8 @@ void parse(Simulator* Sim)
 				// EXTRACTION attribut nom du contrôle: NIVEAU 3
 				journal = string("Control type : ") + child7->Attribute( "type");
 				Server_new->log_journal(journal);
+
+
 				// EXTRACTION attribut type du contrôle: NIVEAU 3
 				if (strcmp(child7->Attribute("type"),"TOR")==0){
 					// Détection d'un controleur de type tout ou rien
@@ -193,16 +189,15 @@ void parse(Simulator* Sim)
 					TOR* TOR_new = new TOR(TOR_ID, TOR_name, Server_new, State_new,
 											tresh_low, tresh_high, ctrl_min, ctrl_max);
 					Control_new = TOR_new;
-					/*
-					journal = string("[i] TOR ID:") + TOR_ID + ", name: " + TOR_name +
-									 ", tresh_low: " + to_string(tresh_low) + ", tresh_high: " + to_string(tresh_high) +
-									 ", ctrl_min: " + to_string(ctrl_min) + ", ctrl_max: " + to_string(ctrl_max);
+					journal = string("TOR ID:") + to_string(TOR_ID) + ", name: " + TOR_name +
+									 ", tresh_low: " + to_string(tresh_low) + ", tresh_high: "
+									 + to_string(tresh_high) + ", ctrl_min: " + to_string(ctrl_min)
+									 + ", ctrl_max: " + to_string(ctrl_max);
 					Server_new->log_journal(journal);
-					*/
 
 
 				}
-				if (strcmp(child7->Attribute("type"),"P")==0){
+				else if (strcmp(child7->Attribute("type"),"P")==0){
 					// Détection d'un controleur de type proportionnel
 
 					TiXmlElement* child8 = child7->FirstChild("param")->ToElement();
@@ -216,17 +211,17 @@ void parse(Simulator* Sim)
 					P* P_new = new P(P_ID, P_name, Server_new, State_new,
 											set_point, gain, val_sat);
 					Control_new = P_new;
-					/*
-					journal = string("[i] Proportionnal ID:") + P_ID + ", name: " + P_name +
-									 ", set_point: " + string(set_point) + ", gain: " + string(gain) +
-									 ", val_sat: " + string(val_sat);
+					journal = string("Proportionnal ID:") + to_string(P_ID) + ", name: "
+									 + P_name + ", set_point: " + to_string(set_point)
+									 + ", gain: " + to_string(gain) + ", val_sat: " +
+									 to_string(val_sat);
 					Server_new->log_journal(journal);
-					*/
 				}
 
-				else {
-					journal =  string("End of zone");
-					cout << journal << endl;
+				else{
+					cout << "[e] Controller type [" << child7->Attribute("type") <<
+							"] not recognized by the parser.";
+					exit( 1 );
 				}
 				// élément autre que zone
 

@@ -7,6 +7,7 @@
 
 
 #include "Simulator.h"
+#include "math.h"
 
 Simulator::Simulator() :
 nTicks_(), Process_list_() {}
@@ -16,12 +17,13 @@ Simulator::~Simulator() {}
 void Simulator::run() {
 	//mise à jour et log des valeurs à chaque step:
 	for(int iTick = 0; iTick < nTicks_; iTick++) {
+		static int checkpoint = 0;
+		if(iTick>checkpoint) {
+			cout << "Simulation status: " << 100*iTick/(nTicks_-1) << "% completed" << endl;
+			checkpoint += (nTicks_-1)*step_/100;
+		}
 		for(int i = 0, c = Process_list_.size(); i < c; i ++) {
 			Process_list_[i]->update(iTick);
 			}
-
-		if((iTick*checkpoint_)%nTicks_==0) {
-			cout << "[i] Simulation status: " << iTick << "% completed" << endl;
-		}
 	}
 }

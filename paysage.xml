@@ -23,7 +23,7 @@
 	<state name="aquarium_pH" >
 		<param iphen="0.1" ictrl="0.05" val_phen = "6.5" state_curr = "7" />
 	</state>
-	<control name="pH_ctrl" type="proportionnal" >
+	<control name="pH_ctrl" type="P" >
            <param set_point = "7" gain = "0.5" val_sat = "140"/>
 	</control>
     </zone>

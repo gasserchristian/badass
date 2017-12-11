@@ -4,22 +4,19 @@ Server created
 [i] New zone : zone_1
 Zone ID : 1
 New state : room_temp
+State ID : 1, name: room_temp, iphen: 0.100000, ictrl: 0.050000, val_phen: 10.000000, state_curr: 20.000000
 New phenomenon : temperature
 Phenomenon type : sinus
+Sinus ID:1, name: temperature, std_dev: 2.000000, offset: 12.000000, amplitude: 7.000000, phase: 1.000000, period: 96, sat_max: inf, sat_min: -inf
 New control : ctrl_temp
 Control type : TOR
+TOR ID:1, name: temperature, tresh_low: 19.000000, tresh_high: 20.000000, ctrl_min: 5.000000, ctrl_max: 50.000000
 [i] New zone : zone_2
 Zone ID : 2
 New state : aquarium_pH
+State ID : 2, name: aquarium_pH, iphen: 0.100000, ictrl: 0.050000, val_phen: 6.500000, state_curr: 7.000000
 New phenomenon : pH
 Phenomenon type : pulse
+Pulse ID:2, name: pH, std_dev: 1.000000, v_low: 5.000000, v_high: 8.000000, t_del: 10, t_rise: 10, pwidth: 20, t_fall: 15, period: 65
 New control : pH_ctrl
-Control type : proportionnal
-State 1 ("temperature"). Relative error command/state 0.157400%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 0.157400%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 1.850838%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 1.850838%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 0.246007%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 0.246007%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 0.801575%. Control activated, tresh_high.........
-State 1 ("temperature"). Relative error command/state 0.801575%. Control activated, tresh_high.........
+Control type : Pu

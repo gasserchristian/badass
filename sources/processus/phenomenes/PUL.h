@@ -10,7 +10,6 @@
 
 #include "../Phenomenon.h"
 #include <cassert>
-#include <iostream> //DELETE AFTER
 
 class PUL : public Phenomenon {
 public:
@@ -25,6 +24,7 @@ public:
 		assert(pwidth_>=0);
 		assert(t_fall_>=0);
 		assert(period_>=0);
+		assert(pul_v_low<pul_v_high);
 	}
 	virtual ~PUL() {}
 	void update(int tic);
