@@ -15,8 +15,6 @@
 
 using namespace std;
 
-const int checkpoints = 5;
-
 class Simulator {
 public:
 	Simulator();
@@ -33,6 +31,7 @@ public:
 private:
 	int nTicks_;
 	vector<Process*> Process_list_;
+	const int checkpoint_ = 5; //for % completed information on console
 };
 
 #endif /* SOURCES_SIMULATOR_H_ */

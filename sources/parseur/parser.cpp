@@ -81,20 +81,15 @@ void parse(Simulator* Sim)
 				if (child6->Attribute("val_phen")) val_phen = atof(child6->Attribute("val_phen"));
 				if (child6->Attribute("state_curr")) state_curr = atof(child6->Attribute("state_curr"));
 				State* State_new = new State(state_ID, state_name, iphen, ictrl, val_phen, state_curr);
-				journal = "[i] ID : " + child2->Attribute( "ID");
-
-
-
-				+ ", name: " + state_name +
-
-
-
+				/*
+				journal = "[i] ID : " + child2->Attribute( "ID") + ", name: " + state_name +
 								 ", iphen" + to_string(iphen) + ", ictrl: " + to_string(ictrl) +
 								 ", val_phen: " + to_string(val_phen) + ", state_curr: " +
 								 to_string(state_curr));
 				Server_new->log_journal(journal);
+				*/
 
-				// flow string dans le chapitre 2 (output string stream) concaténer par le même signe << (champs .str)
+				// flow string dans le chapitre 2 (output string stream) concaténer par le même signe << (champs .str) (même des doubles c'est ok)
 
 
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
