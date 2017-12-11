@@ -87,6 +87,7 @@ void parse(Simulator* Sim)
 								 to_string(state_curr);
 				Server_new->log_journal(journal);
 
+
 				// ---------- EXTRACTION DU PHENOMENE: NIVEAU 2 --------------------
 				TiXmlElement* child3 = child2->FirstChild("phenomenon")->ToElement () ;
 				Phenomenon* Phenomenon_new;
@@ -115,8 +116,8 @@ void parse(Simulator* Sim)
 					if(child4->Attribute("sat_max")) sin_sat_max = atof(child4->Attribute("sat_max"));
 					if(child4->Attribute("sat_min")) sin_sat_min = atof(child4->Attribute("sat_min"));
 					SIN* sin_new = new SIN(sin_ID, sin_name, State_new,
-											sin_std_dev, sin_offs, sin_ampl, sin_period,
-											sin_phase, sin_sat_max, sin_sat_min);
+											sin_std_dev, sin_offs, sin_ampl, sin_phase,
+											sin_period, sin_sat_max, sin_sat_min);
 					Phenomenon_new = sin_new;
 					journal = string("Sinus ID:") + to_string(sin_ID) + ", name: "
 									 + sin_name + ", std_dev: " + to_string(sin_std_dev) +

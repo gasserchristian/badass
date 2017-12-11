@@ -1,3 +1,4 @@
+
 # Gnuplot script file for plotting data in file "plot.dat"
 # This file is called   script_gnu.txt
 
