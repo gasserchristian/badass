@@ -2,13 +2,13 @@
 <landscape name="domotique" nTicks="192" tick_unit="15min">
    <zone name="zone_1" ID="1">
        <phenomenon name="temperature" type="sinus">
-            <param std_dev="1" offs="10" ampl="7" phase="1" period="100"/>
+            <param std_dev="1" offs="6" ampl="4" phase="1" period="100"/>
 	    </phenomenon>
 	    <state name="room_temp">
-	        <param iphen="0.1" ictrl="0.05" val_phen = "10" state_curr = "20" />
+	        <param iphen="0.05" ictrl="0.05" val_phen = "20" state_curr = "20" />
 	    </state>
 	    <control name="ctrl_temp" type="TOR">
-	        <param tresh_low = "5" tresh_high = "6"  ctrl_min = "-10" ctrl_max = "10"/>
+	        <param tresh_low="18" tresh_high="22"  ctrl_min="-10" ctrl_max="30"/>
 	    </control>
 	</zone>
    <zone name="zone_2" ID="2">
@@ -17,15 +17,10 @@
 	                t_fall="15" period ="100"/>
         </phenomenon>
 	<state name="aquarium_pH" >
-		<param iphen="0.1" ictrl="1" val_phen = "6.5" state_curr = "0" />
+		<param iphen="0.1" ictrl="1" val_phen="6" state_curr="6" />
 	</state>
-<<<<<<< HEAD
-	<control name="pH_ctrl" type="P">
-           <param set_point = "3" gain = "0.4" val_sat = "1000"/>
-=======
 	<control name="pH_ctrl" type="P" >
            <param set_point = "7" gain = "0.5" val_sat = "140"/>
->>>>>>> 6b432615949cd87e80f72fa553f65c5085e37c3f
 	</control>
     </zone>
 </landscape>

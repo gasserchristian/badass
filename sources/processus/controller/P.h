@@ -16,7 +16,7 @@ public:
 	//constructor/destructor
 	P(int ID, string name, Server* server, State* state,
 			double set_point, double gain, double sat) :
-				Control(ID, name, gain, set_point, server, state), set_point_(set_point), gain_(gain), sat_(sat) {
+				Control(ID, name, server, state), set_point_(set_point), gain_(gain), sat_(sat) {
 
 	}
 	virtual ~P() {}

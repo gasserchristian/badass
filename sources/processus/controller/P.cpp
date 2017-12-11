@@ -17,7 +17,7 @@ void P::update(int tic) {
 		server_->log_journal(string("State ")
 				+ to_string(ID_)
 				+ " (\"" + string(name_) + "\"). Relative error command/state "
-				+ to_string((etat_curr - consigne_)/consigne_*100)
+				+ to_string((etat_curr - set_point_)/set_point_*100)
 				+ "%. Saturation (+ saturation) of control reached.........");
 	}
 	else if(valctr < -sat_) {
@@ -25,7 +25,7 @@ void P::update(int tic) {
 		server_->log_journal(string("State ")
 				+ to_string(ID_)
 				+ " (\"" + string(name_) + "\"). Relative error command/state "
-				+ to_string((etat_curr - consigne_)/consigne_*100)
+				+ to_string((etat_curr - set_point_)/set_point_*100)
 				+ "%. Saturation () of control reached.........");
 	}
 
