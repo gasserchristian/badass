@@ -16,14 +16,13 @@ using namespace std;
 
 class Process {
 public:
+	//constructor/destructor
 	Process() : ID_(0), name_("no name") {}
 	Process(unsigned ID, string name) : ID_(ID), name_(name) {}
 	virtual ~Process() {}
 
-	// autres
+	//actions
 	virtual void update(int tic) = 0;
-	virtual double workValphen(double val = 0, bool set = false) {return 0.0;}
-	virtual double etatCurr(double val = 0, bool set = false) {return 0.0;}
 
 protected:
 	unsigned ID_;

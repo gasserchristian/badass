@@ -9,8 +9,8 @@
 
 void P::update(int tic) {
 	double etat_curr, valctr;
-	etat_curr = state_->etatCurr();
-	valctr = gain_ * (set_point_ - etat_curr);
+	etat_curr = state_->get_StateCurr();
+	valctr = etat_curr + gain_ * (set_point_ - etat_curr);
 
 	if(valctr > sat_) {
 		valctr = sat_;
@@ -31,7 +31,7 @@ void P::update(int tic) {
 
 	state_->set_valCtrl(valctr);
 
-	server_->log_value(state_->workValphen(0,false));
+	server_->log_value(state_->get_valPhen());
 	server_->log_value(etat_curr);
 	server_->log_value(valctr);
 }

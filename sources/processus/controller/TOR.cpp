@@ -8,19 +8,9 @@
 #include "TOR.h"
 #include <cassert>
 
-TOR::TOR(int ID, string name, Server* server, State* state,
-	double tresh_low, double tresh_high, double ctrl_min, double ctrl_max) :
-		Control(ID, name, ctrl_max, tresh_high, server, state), tresh_low_(tresh_low), tresh_high_(tresh_high),
-		ctrl_min_(ctrl_min), ctrl_max_(ctrl_max) {
-	assert(tresh_low<tresh_high);
-}
-
-TOR::~TOR() {
-}
-
 void TOR::update(int tic) {
 	double etat_curr, valctr;
-	etat_curr = state_->etatCurr();
+	etat_curr = state_->get_StateCurr();
 	if(etat_curr > tresh_high_) {
 		valctr = ctrl_min_;
 		server_->log_journal(string("State ")
@@ -45,7 +35,7 @@ void TOR::update(int tic) {
 
 	state_->set_valCtrl(valctr);
 
-	server_->log_value(state_->workValphen(0,false));
+	server_->log_value(state_->get_valPhen());
 	server_->log_value(etat_curr);
 	server_->log_value(valctr);
 }

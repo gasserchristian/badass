@@ -13,6 +13,7 @@
 
 class Control : public Process {
 public:
+	//constructor/destructor
 	Control() : Process(0, "no name"), val_sat_(0.0), consigne_(0.0),
 		server_(NULL), state_(NULL) {}
 	Control(int ID, string name, double val_sat, double consigne,
@@ -21,12 +22,8 @@ public:
 				server_(server), state_(state) {}
 	virtual ~Control() {};
 
-	//autres
+	//actions
 	void update(int tic) = 0;
-	virtual double workValphen(double val = 0, bool set = false)
-		{ return state_->workValphen(); }
-	virtual double etatCurr(double val = 0, bool set = false)
-		{ return state_->etatCurr(); }
 
 protected:
 	double val_sat_;
