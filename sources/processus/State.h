@@ -13,6 +13,7 @@
 
 class State: public Process {
 public:
+	//constructor/destructor
 	State(int ID, string name, double i_phen, double i_ctrl,
 				 double val_phen, double state_curr) :
 				 Process(ID, name), I_phen_(i_phen), I_ctrl_(i_ctrl),
@@ -20,16 +21,15 @@ public:
 	virtual ~State() {}
 
 	//setters
+	void set_valPhen(double val) { val_phen_ = val; }
 	void set_valCtrl(double val) { val_ctrl_ = val; }
 
-	//autres
-	void calcul(double val_ctrl);
+	//getters
+	double get_valPhen() { return val_phen_; }
+	double get_StateCurr() { return State_curr_;}
 
+	//actions
 	virtual void update(int tic);
-	virtual double workValphen(double val = 0, bool set = false)
-		{ if(set){val_phen_ = val;} return val_phen_; }
-	virtual double etatCurr(double val = 0, bool set = false)
-		{if(set){State_curr_ = val;} return State_curr_; }
 private:
 	double I_phen_;
 	double I_ctrl_;

@@ -14,6 +14,7 @@
 
 class PUL : public Phenomenon {
 public:
+	//constructor/destructor
 	PUL(unsigned pul_ID, string pul_name, State* State_new, double pul_std_dev,
 			double pul_v_low, double pul_v_high, long int pul_t_del,
 			long int pul_t_rise, long int pul_pwidth, long int pul_t_fall,
@@ -27,6 +28,8 @@ public:
 		assert(period_>=0);
 	}
 	virtual ~PUL() {}
+
+	//actions
 	void update(int tic);
 private:
 	double sigma_;

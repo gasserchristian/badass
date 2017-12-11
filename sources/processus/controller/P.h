@@ -13,16 +13,15 @@
 
 class P : public Control {
 public:
+	//constructor/destructor
 	P(int ID, string name, Server* server, State* state,
 			double set_point, double gain, double sat) :
 				Control(ID, name, gain, set_point, server, state), set_point_(set_point), gain_(gain), sat_(sat) {
 
 	}
 	virtual ~P() {}
-	virtual double workValphen(double val = 0, bool set = false)
-		{ return state_->workValphen(); }
-	virtual double etatCurr(double val = 0, bool set = false)
-		{ return state_->etatCurr(); }
+
+	//actions
 	void update(int tic);
 private:
 	double set_point_;

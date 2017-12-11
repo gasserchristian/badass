@@ -12,16 +12,16 @@
 
 class TOR : public Control {
 public:
+	//constructor/destructor
 	TOR(int ID, string name, Server* server, State* state,
-			double tresh_low, double tresh_high, double ctrl_min, double ctrl_max);
-	virtual ~TOR();
+		double tresh_low, double tresh_high, double ctrl_min, double ctrl_max) :
+			Control(ID, name, ctrl_max, tresh_high, server, state), tresh_low_(tresh_low), tresh_high_(tresh_high),
+			ctrl_min_(ctrl_min), ctrl_max_(ctrl_max) {
+	}
+	virtual ~TOR() {}
+
+	//actions
 	void update(int tic);
-
-
-	virtual double workValphen(double val = 0, bool set = false)
-		{ return state_->workValphen(); }
-	virtual double etatCurr(double val = 0, bool set = false)
-		{ return state_->etatCurr(); }
 private:
 	double tresh_low_;
 	double tresh_high_;

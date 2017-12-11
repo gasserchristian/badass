@@ -23,6 +23,6 @@ void PUL::update(int tic) {
 				/t_fall_*(v_high_-v_low_);
 	}
 	phen_val = phen_val + sigma_*box_muller();
-	state_->workValphen(phen_val, true);
+	state_->set_valPhen(phen_val);
 }
 

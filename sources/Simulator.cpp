@@ -8,11 +8,6 @@
 
 #include "Simulator.h"
 
-Simulator::Simulator() :
-nTicks_(), Process_list_() {}
-
-Simulator::~Simulator() {}
-
 void Simulator::run() {
 	//mise à jour et log des valeurs à chaque step:
 	for(int iTick = 0; iTick < nTicks_; iTick++) {
