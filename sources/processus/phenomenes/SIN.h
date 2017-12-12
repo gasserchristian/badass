@@ -10,7 +10,7 @@
 
 #include "../Phenomenon.h"
 #include <string>
-#include <math.h>
+#include <cmath>
 #include <cassert>
 
 class SIN : public Phenomenon {

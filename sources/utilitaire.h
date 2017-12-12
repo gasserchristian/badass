@@ -8,7 +8,7 @@
 #ifndef SOURCE_PROCESSUS_UTILITAIRE_H_
 #define SOURCE_PROCESSUS_UTILITAIRE_H_
 
-#include <math.h>
+#include <cmath>
 #include <random>
 
 double box_muller();
