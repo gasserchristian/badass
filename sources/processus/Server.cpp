@@ -17,7 +17,7 @@ void Server::update(int tic) {
 	//Write in GNU
 	gnu_ << setprecision(3) << setw(15) << tic;
 	for(unsigned int i=0; i< temp_data_.size(); i++) {
-		gnu_ << setprecision(3) << setw(15) << temp_data_[i]; //voir exo balle rebondissante pour alignement
+		gnu_ << setprecision(3) << setw(15) << temp_data_[i];
 	}
 	gnu_ << endl;
 	temp_data_.clear();

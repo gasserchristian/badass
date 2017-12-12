@@ -7,7 +7,6 @@
 
 
 #include "Simulator.h"
-#include "math.h"
 
 void Simulator::run() {
 	//mise à jour et log des valeurs à chaque step:

@@ -14,24 +14,30 @@ void P::update(int tic) {
 
 	if(valctr > sat_) {
 		valctr = sat_;
-		server_->log_journal(string("State ")
-				+ to_string(ID_)
-				+ " (\"" + string(name_) + "\"). Relative error command/state "
-				+ to_string((etat_curr - set_point_)/set_point_*100)
-				+ "%. Saturation (+ saturation) of control reached.........");
 	}
 	else if(valctr < -sat_) {
 		valctr = - sat_;
-		server_->log_journal(string("State ")
-				+ to_string(ID_)
-				+ " (\"" + string(name_) + "\"). Relative error command/state "
-				+ to_string((etat_curr - set_point_)/set_point_*100)
-				+ "%. Saturation () of control reached.........");
 	}
 
 	state_->set_valCtrl(valctr);
 
+	//Log values in the GNU file
 	server_->log_value(state_->get_valPhen());
 	server_->log_value(etat_curr);
 	server_->log_value(valctr);
+
+	//Messages for the journal
+	string journal;
+	if(etat_curr>state_curr_max_) {
+		state_curr_max_ = etat_curr;
+		journal = string("[Tick: ") + to_string(tic) + "] -- [State: " + state_->get_Statename()
+				+ "] reached a new maximum at " + to_string(etat_curr);
+		server_->log_journal(journal);
+	}
+	if(etat_curr<state_curr_min_) {
+		state_curr_min_ = etat_curr;
+		journal = string("[Tick: ") + to_string(tic) + "] -- [State: " + state_->get_Statename()
+				+ "] reached a new minimum at " + to_string(etat_curr);
+		server_->log_journal(journal);
+	}
 }

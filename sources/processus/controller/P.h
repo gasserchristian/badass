@@ -10,6 +10,7 @@
 #define SOURCES_PROCESSUS_CONTROLLER_P_H_
 
 #include "../Control.h"
+#include <limits>
 
 class P : public Control {
 public:
@@ -27,6 +28,8 @@ private:
 	double set_point_;
 	double gain_;
 	double sat_;
+	double state_curr_min_ = std::numeric_limits<double>::infinity();
+	double state_curr_max_ = -state_curr_min_;
 };
 
 #endif /* SOURCES_PROCESSUS_CONTROLLER_P_H_ */

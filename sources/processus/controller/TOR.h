@@ -9,6 +9,7 @@
 #define SOURCES_PROCESSUS_CONTROLLER_TOR_H_
 
 #include "../Control.h"
+#include <limits>
 
 class TOR : public Control {
 public:
@@ -27,6 +28,8 @@ private:
 	double tresh_high_;
 	double ctrl_min_;
 	double ctrl_max_;
+	double state_curr_min_ = std::numeric_limits<double>::infinity();
+	double state_curr_max_ = -state_curr_min_;
 };
 
 #endif /* SOURCES_PROCESSUS_CONTROLLER_TOR_H_ */

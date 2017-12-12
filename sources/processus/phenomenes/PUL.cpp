@@ -6,7 +6,6 @@
  */
 
 #include "PUL.h"
-#include <iostream> //DELETE AFTER
 
 void PUL::update(int tic) {
 	long int val = (tic - t_del_)%period_;
@@ -18,7 +17,6 @@ void PUL::update(int tic) {
 		phen_val = v_high_;
 	}
 	else if(val < t_rise_+pwidth_+t_fall_) {
-		//phen_val = v_high_ - ((double)val-t_rise_+pwidth_)/t_fall_;
 		phen_val = v_high_-((double)val-t_rise_-pwidth_)
 				/t_fall_*(v_high_-v_low_);
 	}

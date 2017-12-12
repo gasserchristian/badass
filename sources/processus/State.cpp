@@ -6,7 +6,6 @@
  */
 
 #include "State.h"
-#include <iostream> //DELETE AFTER
 
 void State::update(int tic) {
 	State_curr_ = State_curr_
